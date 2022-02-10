@@ -1,2 +1,2 @@
-# dots
-My linux configurations
+# Dots
+My linux configuration
