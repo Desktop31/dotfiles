@@ -9,8 +9,9 @@ My linux configuration
   <li>https://archlinux.org/packages/community/any/ttf-font-awesome/</li>
   <li>https://archlinux.org/packages/community/any/ttf-iosevka-nerd/</li>
   <li>https://archlinux.org/packages/extra/any/noto-fonts/</li>
+  <li>https://aur.archlinux.org/packages/ttf-unifont</li>
 </ul>  
 <code>
-  sudo pacman -S ttf-liberation ttf-font-awesome ttf-iosevka-nerd noto-sans
-  yay -S ttf-material-design-icons nerd-font-hermit
+  sudo pacman -S ttf-liberation ttf-font-awesome ttf-iosevka-nerd noto-sans <br>
+  yay -S ttf-material-design-icons nerd-font-hermit ttf-unifont
 </code>
