@@ -11,7 +11,5 @@ My linux configuration
   <li>https://archlinux.org/packages/extra/any/noto-fonts/</li>
   <li>https://aur.archlinux.org/packages/ttf-unifont</li>
 </ul> 
-```
-sudo pacman -S ttf-liberation ttf-font-awesome ttf-iosevka-nerd noto-sans <br>
-yay -S ttf-material-design-icons nerd-font-hermit ttf-unifont
-```
+<code>sudo pacman -S ttf-liberation ttf-font-awesome ttf-iosevka-nerd noto-sans</code> <br>
+<code>yay -S ttf-material-design-icons nerd-font-hermit ttf-unifont</code>
