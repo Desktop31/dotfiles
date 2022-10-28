@@ -1,0 +1,27 @@
+context.modules = [
+    {   name = libpipewire-module-loopback
+        args = {
+            audio.position = [ FL FR ]
+            capture.props = {
+                media.class = Audio/Sink
+                node.name = Output_IN
+                node.description = "Output_IN"
+                #node.latency = 1024/48000
+                #audio.rate = 48000
+                #audio.channels = 2
+                #audio.position = [ FL FR ]
+                #target.object = "my-default-sink"
+            }
+            playback.props = {
+                #media.class = Audio/Source
+                node.name = Output_OUT
+                node.description = "Output_OUT"
+                #node.latency = 1024/48000
+                #audio.rate = 48000
+                #audio.channels = 2
+                #audio.position = [ FL FR ]
+                target.object = "my-default-source"
+            }
+        }
+    }
+]

@@ -1,0 +1,18 @@
+context.modules = [
+{   name = libpipewire-module-pulse-tunnel
+    args = {
+        tunnel.mode = sink
+        # Set the remote address to tunnel to
+        pulse.server.address = "tcp:192.168.51.10"
+        audio.rate=44100
+        audio.channels=2
+        #audio.position=<channel map>
+        #target.object=<remote target name>
+        stream.props = {
+            # extra sink properties
+            node.name = "RpiTunnel"
+            node.latency = 128/44100
+        }
+    }
+}
+]

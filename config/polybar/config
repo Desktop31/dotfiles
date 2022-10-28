@@ -70,9 +70,9 @@ font-5 = Unifont:style=Regular:size=12:antialias=true;3
 modules-left = dwm-layout left player
 modules-center = tagsLeft dwm tagsRight
 ; --DESKTOP--
-modules-right = rightAltEnd xkeyboard right memory rightAlt cpu right wlan eth rightAlt date right time rightAlt
+modules-right = rightEnd pulseaudio-control rightAlt xkeyboard right memory rightAlt cpu right wlan eth rightAlt date right time rightAlt
 ; --LAPTOP--
-;modules-right = rightAltEnd xkeyboard right memory rightAlt cpu right wlan eth rightAlt date timeLap right battery rightAlt
+;modules-right = rightEnd pulseaudio-control rightAlt xkeyboard right memory rightAlt cpu right wlan eth rightAlt date timeLap right battery rightAlt
 
 tray-position = right
 tray-padding = 2
@@ -262,7 +262,7 @@ interface = wlp0s20f3
 interval = 3.0
 
 format-connected = <label-connected>
-label-connected = %{T2}
+label-connected = %{T2} %essid% 
 ;%essid%
 
 format-disconnected =
@@ -532,6 +532,32 @@ format-suffix-foreground = ${colors.background}
 click-left = playerctl play-pause -p spotify
 click-right = playerctl next -p spotify
 click-middle = playerctl previous -p spotify
+
+;==========================
+;	PULSEAUDIO CONTROL
+; (AUR: pulseaudio-control)
+;==========================
+
+[module/pulseaudio-control]
+type = custom/script
+tail = true
+;format-underline = ${colors.cyan}
+;label-padding = 2
+;label-foreground = ${colors.foreground}
+label-background = ${colors.background}
+
+# Icons mixed from Font Awesome 5 and Material Icons
+# You can copy-paste your options for each possible action, which is more
+# trouble-free but repetitive, or apply only the relevant ones (for example
+# --sink-blacklist is only needed for next-sink).
+
+# EDIT THIS FOR EACH CONFIG
+exec = pulseaudio-control --icons-volume " ,  , " --icon-muted " " --node-nicknames-from "device.description" --node-nickname "alsa_output.pci-0000_0a_00.4.analog-stereo/analog-output-lineout: Headphones" --node-nickname "alsa_output.pci-0000_0a_00.4.analog-stereo/analog-output-headphones:Speakers" --node-nickname "RpiTunnel: RPi Tunnel" listen
+click-right = exec pavucontrol &
+click-left = pulseaudio-control togmute
+click-middle = pulseaudio-control --node-blacklist  "alsa_output.pci-0000_08_00.1.hdmi-stereo","VirtualMic","Media_IN","VoiceChat_IN","Output_IN" next-node
+scroll-up = pulseaudio-control --volume-max 100 down
+scroll-down = pulseaudio-control --volume-max 100 up
 
 ;==========================
 ;		SEPARATORS

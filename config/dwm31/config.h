@@ -77,7 +77,7 @@ static const char *rofiFB[]         = { "rofi", "-show", "filebrowser", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ ControlMask|AltMask,          28,      spawn,          {.v = termcmd } }, // t
+	{ MODKEY,                       36,      spawn,          {.v = termcmd } }, // t
 	{ MODKEY,                       56,      togglebar,      {0} }, // b
 	{ MODKEY,                       44,      focusstack,     {.i = +1 } }, // j
 	{ MODKEY,                       45,      focusstack,     {.i = -1 } }, // k
@@ -85,7 +85,7 @@ static Key keys[] = {
 	{ MODKEY,                       40,      incnmaster,     {.i = -1 } }, // d
 	{ MODKEY,                       43,      setmfact,       {.f = -0.05} }, // h
 	{ MODKEY,                       46,      setmfact,       {.f = +0.05} }, // l
-	{ MODKEY,                       36, 	 zoom,           {0} }, // return
+	{ MODKEY|ShiftMask,             36, 	 zoom,           {0} }, // return
 	{ MODKEY,                       23,      view,           {0} }, // tab
 	{ MODKEY,                       24,      killclient,     {0} }, // q
 	{ MODKEY,                       28,      setlayout,      {.v = &layouts[0]} }, // t
@@ -116,6 +116,8 @@ static Key keys[] = {
 	{ 0,                           122,      spawn,          SHCMD("pactl set-sink-volume $(pactl get-default-sink) -5%") }, // fn + F10 VOLUME DOWN
 	{ 0,                           123,      spawn,          SHCMD("pactl set-sink-volume $(pactl get-default-sink) +5%") }, // fn + F11 VOLUME UP
 	{ 0,                           121,      spawn,          SHCMD("pactl set-sink-mute $(pactl get-default-sink) toggle") }, // fn + F12 MUTE
+	{ 0,                           233,      spawn,          SHCMD("brightnessctl s +10%") }, // raise brightness
+	{ 0,                           232,      spawn,          SHCMD("brightnessctl s 10%-") }, // lower brightness
 	TAGKEYS(                        67,                      0) // F1
 	TAGKEYS(                        68,                      1) // F2
 	TAGKEYS(                        69,                      2) // F3
@@ -169,10 +171,7 @@ static IPCCommand ipccommands[] = {
 static const char *const autostart[] = {
 	"picom", "--experimental-backends", "-b", NULL,
 	"nitrogen", "--restore", NULL,
-	"discord", NULL,
 	"emote", NULL,
 	"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1", NULL,
-	"cadmus", NULL,
-	//"qjackctl", NULL,
 	NULL
 };

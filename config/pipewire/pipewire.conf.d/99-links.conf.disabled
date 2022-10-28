@@ -1,0 +1,11 @@
+context.objects = [
+    {   factory = link-factory
+        args = {
+            link.output.node = Media
+            link.output.port = capture_FL
+            link.input.node  = Output
+            link.input.port  = playback_FL
+            link.passive     = true
+        }
+    }
+]

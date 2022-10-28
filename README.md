@@ -14,3 +14,6 @@ My linux configuration
 </ul> 
 <code>sudo pacman -S ttf-liberation ttf-font-awesome ttf-iosevka-nerd noto-fonts noto-fonts-emoji</code> <br>
 <code>yay -S ttf-material-design-icons nerd-fonts-hermit ttf-unifont</code>
+
+<h3> Picom fork: </h3>
+<code>yay -S picom-pijulius-git</code>
