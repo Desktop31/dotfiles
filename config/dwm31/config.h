@@ -71,7 +71,7 @@ static const char *dmenucmd[]       = { "dmenu_run", "-m", dmenumon, "-fn", dmen
 static const char *termcmd[]        = { "alacritty", NULL };
 static const char *filemanagercmd[] = { "nautilus", NULL };
 static const char *discord[]        = { "discord", NULL };
-static const char *brave[]          = { "brave", NULL };
+static const char *browser[]        = { "firefox-nightly", NULL };
 static const char *screenshot[]     = { "flameshot", "gui", NULL };
 static const char *rofiFB[]         = { "rofi", "-show", "filebrowser", NULL };
 
@@ -105,7 +105,7 @@ static Key keys[] = {
 	{ MODKEY,                       21,  	 setgaps,        {.i = +1 } }, // ´ ... 1 right from =
 	{ MODKEY|ShiftMask,             21,  	 setgaps,        {.i = 0  } }, // same as above
 	/* custom launch keys */
-	{ MODKEY,                       11,      spawn,          {.v = brave } }, // 2
+	{ MODKEY,                       11,      spawn,          {.v = browser } }, // 2
 	{ MODKEY,                       13,      spawn,          {.v = discord } }, // 4
 	{ MODKEY|ShiftMask,             39,      spawn,          {.v = screenshot } }, // s
 	{ MODKEY,			            26,      spawn,          {.v = filemanagercmd } }, // e
@@ -172,6 +172,7 @@ static const char *const autostart[] = {
 	"picom", "--experimental-backends", "-b", NULL,
 	"nitrogen", "--restore", NULL,
 	"emote", NULL,
+	"dunst", NULL,
 	"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1", NULL,
 	NULL
 };
