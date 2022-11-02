@@ -1,9 +1,9 @@
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[gray]%}["
-ZSH_THEME_GIT_PROMPT_SUFFIX="] "
-ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[yellow]%}*%{$fg[gray]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="%B%F{#171717}["
+ZSH_THEME_GIT_PROMPT_SUFFIX="]%b "
+ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[yellow]%}*%F{#171717}"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
-PROMPT="%K{yellow}%B%F{008} %n%b %F{yellow}%K{black} %F{yellow}%B%~ \$(git_prompt_info)%b%F{black}%k"$'\n'"%k%B%F{yellow} %b%f%k"
+PROMPT="%K{yellow}%B%F{008} %n%b %F{yellow}%K{#373737} %F{yellow}%B%~ \$(git_prompt_info)%b%F{#373737}%k"$'\n'"%k%B%F{yellow} %b%f%k"
 
 LS_COLORS="di=1;33"
 export LS_COLORS

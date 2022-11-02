@@ -229,24 +229,26 @@ schemes:
     selection:
       text: CellForeground
       background: '#59542b'
+    # Top row in gnome-terminal
     normal:
-      black:   '#1c1f24'
-      red:     '#ff6c6b'
-      green:   '#98be65'
-      yellow:  '#b09d3f' #'#da8548'
+      black:   '#171717'
+      red:     '#C0431C'
+      green:   '#26a269'
+      yellow:  '#9e891b' #'#da8548'
       blue:    '#51afef'
       magenta: '#c678dd'
       cyan:    '#5699af'
-      white:   '#202328'
+      white:   '#656363'
+    # Bottom row in gnome-terminal
     bright:
-      black:   '#5b6268'
+      black:   '#373737'
       red:     '#da8548'
-      green:   '#4db5bd'
-      yellow:  '#ecbe7b'
+      green:   '#33d17a'
+      yellow:  '#eed714'
       blue:    '#3071db'
       magenta: '#a9a1e1'
       cyan:    '#46d9ff'
-      white:   '#dfdfdf'
+      white:   '#fff1f3'
 
   ### Dracula ###
   Dracula: &Dracula
