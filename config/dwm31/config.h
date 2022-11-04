@@ -37,7 +37,6 @@ static const Rule rules[] = {
 	/* class        instance    title       tags mask     isfloating   monitor */
 	{ "Spotify",       NULL,       NULL,       1 << 7,        0,           -1 }, // retard spotify not working
 	{ "discord",       NULL,       NULL,       1 << 8,        0,           1 },
-	{ "Brave-browser", NULL,       NULL,            1,        0,           -1 },
 };
 
 /* layout(s) */
@@ -169,10 +168,11 @@ static IPCCommand ipccommands[] = {
 };
 
 static const char *const autostart[] = {
-	"picom", "--experimental-backends", "-b", NULL,
-	"nitrogen", "--restore", NULL,
-	"emote", NULL,
-	"dunst", NULL,
 	"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1", NULL,
+	"picom", "--experimental-backends", "-b", NULL,
+	"nitrogen", "--restore", NULL, // background
+	"emote", NULL, // emoji picker
+	"dunst", NULL, // notifications
+	"mpris-proxy", NULL, // bluetooth volume/playback controls
 	NULL
 };

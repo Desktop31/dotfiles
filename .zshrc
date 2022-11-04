@@ -18,5 +18,10 @@ alias config-polybar='ed $HOME/.config/polybar/config'
 alias config-dwm='cd $HOME/.config/dwm31/ && sued config.h'
 alias config-picom='ed $HOME/.config/picom/picom.conf'
 
+# Import private aliases (ssh, bluetooth devices, ...)
+PRIVATE_PATH="$HOME/.zsh_alias_private"
+if [ -f $PRIVATE_PATH ]; then
+    source $PRIVATE_PATH
+fi
 
 # --
