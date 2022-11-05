@@ -1,0 +1,2 @@
+export GTK_THEME="$(grep 'gtk-theme-name' "${XDG_CONFIG_HOME:-$HOME/.config}/gtk-3.0/settings.ini" | sed 's/.*\s*=\s*//')"
+export QT_QPA_PLATFORMTHEME=gtk2

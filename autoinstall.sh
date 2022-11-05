@@ -8,6 +8,7 @@ PACMAN="sudo pacman -S --noconfirm"
 YAY="yay -S --noconfirm"
 
 # Install yay
+echo "$($PACMAN base-devel)"
 sudo git clone https://aur.archlinux.org/yay.git ~/yay
 sudo chown -R $USER:users ~/yay
 cd ~/yay && makepkg -si
@@ -15,6 +16,7 @@ cd $DOTS_DIR
 
 # Copy configs and themes, install DWM
 cp -r config/* ~/.config/
+cp .xprofile ~/.xprofile
 
 cd ~/.config/dwm31 && sudo make install
 if [ ! -d /usr/share/xsessions/ ]; then
@@ -43,7 +45,7 @@ sudo cp lightdm/web-greeter.yml /etc/lightdm/web-greeter.yml
 sudo systemctl enable lightdm
 
 # Copy Wallpapers and Logos where they belong
-$($PACMAN xdg-user-dirs)
+echo "$($PACMAN xdg-user-dirs)"
 xdg-user-dirs-update
 cp -r Wallpapers ~/Pictures/
 sudo cp -r Wallpapers /usr/share/backgrounds
@@ -71,10 +73,10 @@ systemctl --user enable --now wireplumber.service
 echo "$($YAY $(cat packages))"
 
 # Xorg config
-sudo cp X11/xorg.conf /etc/X11/xorg.conf
+#sudo cp X11/xorg.conf /etc/X11/xorg.conf
 if [ ! -d /etc/X11/xorg.conf.d/ ]; then
 	sudo mkdir -p /etc/X11/xorg.conf.d/
 fi
 sudo cp X11/xorg.conf.d/* /etc/X11/xorg.conf.d/
 
-# TODO: add packages (xorg, ...)
+echo "--DONE!--"
