@@ -10,6 +10,8 @@ My Arch linux configuration
 - pipewire + wireplumber
 - micro editor 
 
+<sub>and Czech keyboard :smrckaBat:</sub>
+
 ## Automatic installation (WIP!)
 Run **autoinstall.sh** for automatic deployment. <br>
 The script only deploys the config files and installs my preffered packages, <br>
