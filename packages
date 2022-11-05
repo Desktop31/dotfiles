@@ -23,6 +23,7 @@ rnnoise
 noise-suppression-for-voice
 playerctl
 python
+dbus-python
 cmake
 gtk2
 qt5-styleplugins

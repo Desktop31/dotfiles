@@ -1,0 +1,30 @@
+<!DOCTYPE patchbay>
+<patchbay version="0.3.6" name="pw-patchbay_v2">
+ <items>
+  <item port-type="pipewire-audio" node-type="pipewire">
+   <output node="Starship/Matisse HD Audio Controller Analog Stereo" port="ALC1220 Analog:capture_FL"/>
+   <input node="VirtualMic" port="VirtualMic:input_FL"/>
+  </item>
+  <item port-type="pipewire-audio" node-type="pipewire">
+   <output node="DenoisedMic" port="DenoisedMic:capture_1"/>
+   <input node="VirtualMic" port="VirtualMic:input_FR"/>
+  </item>
+  <item port-type="pipewire-audio" node-type="pipewire">
+   <output node="Starship/Matisse HD Audio Controller Analog Stereo" port="ALC1220 Analog:capture_FR"/>
+   <input node="VirtualMic" port="VirtualMic:input_FR"/>
+  </item>
+  <item port-type="pipewire-audio" node-type="pipewire">
+   <output node="Realtek USB2.0 Audio Analog Stereo" port="Realtek USB2.0 Audio:capture_FL"/>
+   <input node="DenoisedMic" port="DenoisedMic:input_FL"/>
+  </item>
+  <item port-type="pipewire-audio" node-type="pipewire">
+   <output node="DenoisedMic" port="DenoisedMic:capture_1"/>
+   <input node="VirtualMic" port="VirtualMic:input_FL"/>
+  </item>
+  <item port-type="pipewire-audio" node-type="pipewire">
+   <output node="Realtek USB2.0 Audio Analog Stereo" port="Realtek USB2.0 Audio:capture_FR"/>
+   <input node="DenoisedMic" port="DenoisedMic:input_FR"/>
+  </item>
+ </items>
+</patchbay>
+
