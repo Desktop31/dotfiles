@@ -108,8 +108,8 @@ static Key keys[] = {
 	{ MODKEY,                       13,      spawn,          {.v = discord } }, // 4
 	{ MODKEY|ShiftMask,             39,      spawn,          {.v = screenshot } }, // s
 	{ MODKEY,			            26,      spawn,          {.v = filemanagercmd } }, // e
-	{ MODKEY,                       27,      spawn,          SHCMD("$HOME/.config/rofi/launchers/misc/launcher.sh") }, // r - rofi app launcher
-	{ MODKEY,                        9,      spawn,          SHCMD("$HOME/.config/rofi/powermenu/powermenu.sh") }, // ESC - rofi power menu
+	{ MODKEY,                       27,      spawn,          SHCMD("$HOME/.config/rofi/launcher.sh") }, // r - rofi app launcher
+	{ MODKEY,                        9,      spawn,          SHCMD("$HOME/.config/rofi/powermenu.sh") }, // ESC - rofi power menu
 	{ MODKEY,                       41,      spawn,          {.v = rofiFB } }, // f
     /* volume keys */
 	{ 0,                           122,      spawn,          SHCMD("pactl set-sink-volume $(pactl get-default-sink) -5%") }, // fn + F10 VOLUME DOWN
@@ -170,9 +170,11 @@ static IPCCommand ipccommands[] = {
 static const char *const autostart[] = {
 	"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1", NULL,
 	"picom", "--experimental-backends", "-b", NULL,
-	"nitrogen", "--restore", NULL, // background
-	"emote", NULL, // emoji picker
-	"dunst", NULL, // notifications
-	"mpris-proxy", NULL, // bluetooth volume/playback controls
+	"nitrogen", "--restore", NULL,
+	"emote", NULL,
+	"dunst", NULL,
+	"mpris-proxy", NULL,
+	//"qpwgraph", NULL,
+	//"sh", "-c", "$HOME/Scripts/connectRpiTunnel.sh", NULL,
 	NULL
 };

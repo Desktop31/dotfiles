@@ -1,6 +1,7 @@
 /** Basic config file **/
 
 configuration {
-  show-icons:         true;
-  icon-theme:         "Papirus";
+	font:				"Noto Sans Regular 12";
+	show-icons:         true;
+	icon-theme:         "Flat-Remix-Grey-Dark";
 }

@@ -1,0 +1,5 @@
+/*
+ * Import color theme
+ */
+
+@import "colors/monokai31.rasi"
