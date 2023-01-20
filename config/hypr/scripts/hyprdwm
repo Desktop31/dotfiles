@@ -1,0 +1,86 @@
+#!/bin/zsh
+
+# ----------------
+# Example hyprland.conf:
+# ----------------
+#
+# 	# Main monitor
+# 	wsbind=1,DP-1 
+# 	...           # everything in between
+# 	wsbind=9,DP-1
+# 	workspace=DP-1,1 # Default workspace for main monitor
+# 
+# 	# Second monitor
+# 	wsbind=11,DP-2 
+# 	...            # everything in between
+# 	wsbind=19,DP-2
+# 	workspace=DP-2,11 # Default workspace for 2nd monitor
+# 
+# 	# movement binds if placed in ~/.config/hypr/scripts/
+# 	bind=SUPER,F1,exec,~/.config/hypr/scripts/hyprdwm workspace 1
+# 	... # everything in between
+# 	bind=SUPER,F9,exec,~/.config/hypr/scripts/hyprdwm workspace 9
+# 	
+# 	bind=SUPERSHIFT,F1,exec,~/.config/hypr/scripts/hyprdwm movesilent 1
+# 	... # everything in between
+# 	bind=SUPERSHIFT,F9,exec,~/.config/hypr/scripts/hyprdwm movesilent 9
+# 	
+# 	bind=SUPER,right,exec,~/.config/hypr/scripts/hyprdwm right
+# 	bind=SUPER,left,exec,~/.config/hypr/scripts/hyprdwm left
+#
+# ----------------
+
+
+if [[ -z $1 || $1 == "--help" || $1 == "-h" ]]; then
+	echo "Brings DWM workspace behaviour to Hyprland\n
+  Usage: ./hyprdwm <COMMAND>\n
+  Commands:
+  \tright            \tMoves one workspace to the right on the focused monitor in range 1-9
+  \tleft             \tMoves one workspace to the left on the focused monitor in range 1-9
+  \tworkspace [1-9]  \tMoves to workspace 1-9 on the focused monitor
+  \tmove [1-9]       \tMoves the focused window to workspace 1-9 and switches to that workspace
+  \tmovesilent [1-9] \tSame as 'move', but stays on current workspace
+  \t--help           \tDisplays this message\n"
+fi
+
+MON_ID=$(hyprctl monitors | awk '/focused: yes/' RS= | head -n 1 | awk 'match($0, /ID [0-9]+/){print substr($0, RSTART + RLENGTH-1, 1)}')
+
+ACTIVE_WS=$(hyprctl monitors | awk '/focused: yes/' RS= | awk '/active workspace: [0-9]+/{print $3}')
+
+RANGE=($(($MON_ID * 10 + 1)) $(($MON_ID * 10 + 9)))
+
+# -- Workspace movement --
+case $1 in
+    "right")
+    	if [[ $ACTIVE_WS == $RANGE[2] ]]; then 
+    		hyprctl dispatch workspace $RANGE[1] >>/dev/null
+		else
+			hyprctl dispatch workspace +1 >>/dev/null
+		fi
+        ;;
+    "left")
+		if [[ $ACTIVE_WS == $RANGE[1] ]]; then 
+	   		hyprctl dispatch workspace $RANGE[2] >>/dev/null
+		else
+			hyprctl dispatch workspace -1 >>/dev/null
+		fi
+        ;;
+    "workspace")
+		if [[ -n $2 && $2 -ge 1 && $2 -le 9 ]]; then
+			hyprctl dispatch workspace $(($RANGE[1] - 1 + $2)) >>/dev/null
+    	fi
+        ;;
+    "move" || "movesilent")
+		MOVEARG="movetoworkspace"
+		if [[ $1 == "movesilent" ]]; then 
+			MOVEARG="movetoworkspacesilent" 
+		fi
+    	
+		if [[ -n $2 && $2 -ge 1 && $2 -le 9 ]]; then
+			hyprctl dispatch $MOVEARG $(($RANGE[1] - 1 + $2)) >>/dev/null
+    	fi
+        ;;
+    *)
+		echo "bruh"
+    	;;
+esac

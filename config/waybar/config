@@ -1,98 +1,113 @@
 {
-    // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 30, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
-    // Choose the order of the modulestemperature
-    "modules-left": ["hyprland/window", "custom/spotify"],
-    "modules-center": ["wlr/workspaces"],
-    "modules-right": ["pulseaudio", "network", "cpu", "memory", "clock", "tray"],
+    "layer": "top",
+    "position": "top",
+
+    // Choose the order of the modules
+    "modules-left": ["custom/media", "hyprland/window", "custom/sepRight"],
+    "modules-center": ["custom/sepLeft", "wlr/workspaces", "custom/sepRight"],
+    "modules-right": ["custom/sepLeft", "pulseaudio", "memory", "cpu", "hyprland/language", "custom/notifications", "clock", "tray"],
+
     // Modules configuration
-
-	"wlr/workspaces": {
-	  "format": "{icon}",
-	  "on-click": "activate",
-	  "format-icons": {
-	    "1": "1", // 
-	    "2": "2",
-	    "3": "3",
-	    "4": "4",
-	    "5": "5",
-	    "6": "6",
-	    "7": "7",
-	    "8": "8",
-	    "9": "9",
-	    "10": "M",
-	    "urgent": "",
-	    "active": "",
-	    "default": ""
-	  }
-	},
-
-    "hyprland/window": {
-        "format": "👉 {}"
+    "wlr/workspaces": {
+        "all-outputs": false,
+        "format": "{name}",
+        "on-click": "activate",
+        "on-scroll-down": "hyprctl dispatch workspace m+1",
+        "on-scroll-up": "hyprctl dispatch workspace m-1"
     },
-    
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
+    "cpu": {
+        "interval": 10,
+        "format": "{usage}%  ",
+        "max-length": 10
     },
     "tray": {
-        // "icon-size": 21,
+        "icon-size": 18,
         "spacing": 10
     },
     "clock": {
-        // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
-    },
-    "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
-    },
-    "memory": {
-        "format": "{}% "
-    },
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "timezone": "Europe/Prague",
+        "interval": 1,
+        "format": "{:%H:%M}",
+        "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%H:%M:%S}",
+        "on-click-right": "pkill gnome-calendar || gnome-calendar"
     },
     "pulseaudio": {
-        "scroll-step": 5, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format": "{icon} {volume}% {desc}",
+        "format-bluetooth": "{icon}   {volume}% {desc}",
+        "format-bluetooth-muted": "   {volume}% {desc}",
+        "format-muted": "  {volume}% {desc}",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
+          "headphone": "",
+          "hands-free": "",
+          "headset": "",
+          "phone": "",
+          "portable": "",
+          "car": "",
+          "default": ["  ", "  ", "  "]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pulseaudio-control togmute",
+        "on-click-right": "pkill pavucontrol || pavucontrol",
+        "on-click-middle": "pulseaudio-control --node-blacklist  'alsa_output.pci-0000_0c_00.4.analog-stereo','VirtualMic','VoiceChat_IN','Output_IN','control.endpoint.multimedia','control.endpoint.communication' next-node",
+        "on-scroll-up": "pulseaudio-control --volume-max 100 down",
+        "on-scroll-down": "pulseaudio-control --volume-max 100 up",
+        "tooltip": true,
     },
-    "custom/spotify": {
-        "exec": "/usr/bin/python3 /home/desktop31/.config/waybar/modules/mediaplayer.py --player spotify",
-        "format": "{}  ",
+    "custom/media": {
+        "format": "{}",
+        "interval": 1,
+        "exec": "python ~/.config/waybar/scripts/spotify_status.py",
+        "on-click": "playerctl play-pause -p spotify",
+        "on-click-right": "playerctl next -p spotify",
+        "on-click-middle": "playerctl previous -p spotify",
         "return-type": "json",
-        "on-click": "playerctl play-pause",
-        "on-scroll-up": "playerctl next",
-        "on-scroll-down": "playerctl previous"
+        "escape": true,
+        "tooltip": false
     },
+    "custom/sysmenu": {
+        "format": "󰤆",
+        "on-click": "~/.config/waybar/scripts/sysmenu.sh &",
+        "tooltip": false
+      },
+    "hyprland/window": {
+        "format": "{}",
+        "separate-outputs": true
+    },
+    "hyprland/language": {
+    	"format": "{}",
+    	"format-en": "US",		
+    	"format-cs": "CZ"
+    },
+    "memory": {
+        "interval": 30,
+        "format": "{used:0.1f}G/{total:0.1f}G  ",
+        "on-click": "killall gnome-system-monitor || gnome-system-monitor -r"
+    },
+    "custom/notifications": {
+        "restart-interval": 1,
+        "exec": "~/.config/waybar/scripts/notifications.sh",
+        "on-click": "dunstctl history-pop",
+        "on-click-right": "dunstctl close",
+        "on-click-middle": "dunstctl set-paused toggle",
+        "tooltip": false,
+    },
+    "custom/sepRight": {
+    	"format": " ",
+    	"tooltip": false
+    },
+    "custom/sepRight-alt": {
+    	"format": " ",
+    	"tooltip": false
+    },
+    "custom/sepLeft": {
+    	"format": "",
+    	"tooltip": false
+    },
+    "custom/sepLeft-alt": {
+    	"format": "",
+    	"tooltip": false
+    }
+
+    //                           
+    //                   
 }

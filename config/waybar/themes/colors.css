@@ -1,0 +1,27 @@
+
+/*   Colors!   */
+
+@define-color black          #171717;
+@define-color darkorange     #C0431C;
+@define-color green          #26a269; /* spotify green #1ED760; */ 
+@define-color gold           #9e891b;
+@define-color darkblue       #3071db;
+@define-color pink           #c678dd;
+@define-color cyan           #5699af;
+@define-color lightgray      #949494;
+
+@define-color gray           #373737;
+@define-color orange         #da8548;
+@define-color lime           #33d17a;
+@define-color yellow         #eed714;
+@define-color blue           #51afef;
+@define-color magenta        #a9a1e1;
+@define-color lightblue      #46d9ff;
+@define-color white          #fff1f3;
+@define-color red            #ac2020;
+
+@define-color bg             #2c2c2c;
+@define-color bg-alt         #434343;
+
+@define-color text       @white;
+@define-color subtext    #b0b0b0;

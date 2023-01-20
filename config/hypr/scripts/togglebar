@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+BAR_PID=$(pidof waybar)
+
+if [[ -z $BAR_PID ]]; then
+	waybar &
+else
+	killall waybar
+fi

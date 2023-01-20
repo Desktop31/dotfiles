@@ -1,4 +1,9 @@
 {
     "Alt-/": "lua:comment.comment",
-    "CtrlUnderscore": "lua:comment.comment"
+    "CtrlUnderscore": "lua:comment.comment",
+    "CtrlC": "Copy",
+    "CtrlV": "Paste",
+    "CtrlAltLeft": "ParagraphPrevious",
+    "CtrlAltRight": "ParagraphNext",
+    "Alt-t": "command:tree"
 }

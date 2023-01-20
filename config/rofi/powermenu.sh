@@ -55,12 +55,12 @@ case $chosen in
         fi
         ;;
     $lock)
-		if [[ -f /usr/bin/i3lock ]]; then
-			i3lock
+		if [[ -f /usr/bin/lightdm ]]; then
+			dm-tool lock
 		elif [[ -f /usr/bin/betterlockscreen ]]; then
 			betterlockscreen -l
-		elif [[ -f /usr/bin/lightdm ]]; then
-			dm-tool lock
+		elif [[ -f /usr/bin/i3lock ]]; then
+			i3lock
 		fi
         ;;
     $suspend)
@@ -87,6 +87,8 @@ case $chosen in
 				i3-msg exit
 			elif [[ "$DESKTOP_SESSION" == "dwm" ]]; then
 				pkill dwm
+			elif [[ "$DESKTOP_SESSION" == "hyprland" ]]; then
+				hyprctl dispatch exit none
 			fi
 		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
 			exit 0

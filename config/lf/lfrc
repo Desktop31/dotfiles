@@ -1,0 +1,106 @@
+set shell zsh
+set shellopts '-eu'
+set ifs "\n"
+set scrolloff 10
+set sortby natural
+
+
+set icons true
+set ignorecase true
+set ignoredia true
+set drawbox true
+set incsearch true
+set incfilter true
+
+set promptfmt "\033[1;43;30m %u \033[0;100;33m \033[1;100;3;33m%d%f \033[0;90m \033[0m"
+set errorfmt "\033[97;41m %s \033[0;31m \033[0m"
+set truncatechar '~'
+
+
+
+# -- FILE PREVIEW --
+set previewer ctpv
+set cleaner ctpvclear
+&ctpv -s $id
+&ctpvquit $id
+
+
+
+# -- COMMANDS --
+
+# %mkdir -p ~/.trash
+cmd trash %set -f; mv $fx ~/.trash
+
+cmd mkfile ${{
+  printf "File Name: "
+  read ans
+  $EDITOR $ans
+}}
+
+cmd mkdir ${{
+  printf "Directory Name: "
+  read ans
+  mkdir $ans
+}}
+
+cmd extract ${{
+    set -f
+    case $f in
+        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
+        *.tar.gz|*.tgz) tar xzvf $f;;
+        *.tar.xz|*.txz) tar xJvf $f;;
+        *.zip) unzip $f;;
+        *.rar) unrar x $f;;
+        *.7z) 7z x $f;;
+    esac
+}}
+
+cmd tar ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    tar -czf $1.tar.gz $1
+    rm -rf $1
+}}
+
+cmd zip ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    zip -r $1.zip $1
+    rm -rf $1
+}}
+
+
+
+# -- Bindings --
+
+# Remove some defaults
+map m
+map o
+map n
+map "'"
+map '"'
+map d
+map zh
+map t
+
+map au extract
+
+map . set hidden!
+map x cut
+map <delete> trash
+map <enter> shell
+map f filter
+map F setfilter ""
+
+map mk mkfile
+map md mkdir
+
+map git ${{clear; git status; echo "press ENTER"; read ENTER}}
+
+map gc cd ~/.config
+map gd cd ~/Downloads
+map gD cd ~/Documents
+map gp cd ~/Pictures
+map gv cd ~/Videos

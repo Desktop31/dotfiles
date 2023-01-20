@@ -51,6 +51,6 @@ done
 
 echo "$(date $DFORMAT) Host $HOST found, loading module" >>$LOG_DEST
 
-MODULE=$(pactl load-module module-tunnel-sink server=tcp:$HOST rate=44100 channels=2 sink_name=RpiTunnel)
+MODULE=$(pactl load-module module-tunnel-sink server=tcp:$HOST rate=44100 channels=2 sink_name=RPiTunnel sink_properties=device.description=RPiTunnel)
 
 echo "$(date $DFORMAT) Tunnel successfully loaded as module $MODULE" >>$LOG_DEST
