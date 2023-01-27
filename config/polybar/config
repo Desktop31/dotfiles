@@ -555,7 +555,7 @@ label-background = ${colors.background}
 exec = pulseaudio-control --icons-volume " ,  , " --icon-muted " " --node-nicknames-from "device.description" --node-nickname "alsa_output.pci-0000_0a_00.4.analog-stereo/analog-output-lineout: Headphones" --node-nickname "alsa_output.pci-0000_0a_00.4.analog-stereo/analog-output-headphones:Speakers" --node-nickname "RpiTunnel: RPi Tunnel" listen
 click-right = exec pavucontrol &
 click-left = pulseaudio-control togmute
-click-middle = pulseaudio-control --node-blacklist  "alsa_output.pci-0000_08_00.1.hdmi-stereo","VirtualMic","Media_IN","VoiceChat_IN","Output_IN" next-node
+click-middle = pulseaudio-control --node-blacklist  "alsa_output.pci-0000_08_00.1.hdmi-stereo","VirtualMic","VoiceChat_IN","Output_IN","control.endpoint.multimedia","control.endpoint.communication" next-node
 scroll-up = pulseaudio-control --volume-max 100 down
 scroll-down = pulseaudio-control --volume-max 100 up
 

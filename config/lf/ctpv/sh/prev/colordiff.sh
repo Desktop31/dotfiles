@@ -1,3 +1,0 @@
-# diff: colordiff
-
-colordiff < "$f"

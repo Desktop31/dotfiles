@@ -1,0 +1,30 @@
+polkit-gnome
+gnome-keyring
+avahi
+bluez
+bluez-utils
+brightnessctl
+python
+dbus-python
+cmake
+gtk2
+yajl
+jsoncpp
+libinput
+gparted
+gst-plugin-pipewire
+pavucontrol
+samba
+smbclient
+cups
+playerctl
+neofetch
+htop
+nvtop
+vim
+micro
+kitty
+networkmanager
+qt5-styleplugins		A
+qt6gtk2					A
+pulseaudio-control		A

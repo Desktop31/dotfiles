@@ -30,7 +30,7 @@ greeter:
     secure_mode: True
     theme: neon
     icon_theme:
-    time_language:
+    time_language: cs
 
 #
 # layouts                  A list of preferred layouts to use
@@ -43,6 +43,7 @@ greeter:
 #
 layouts:
     - cz-qwertz
+    - us
 
 #
 # features:

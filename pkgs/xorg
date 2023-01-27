@@ -1,0 +1,9 @@
+xorg-server
+xorg-xinit
+xorg-xrandr
+xorg-xsetroot
+xclip
+nitrogen
+arandr
+https://github.com/Desktop31/dwm31.git 		G
+polybar-dwm-module 		A

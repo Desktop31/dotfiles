@@ -22,7 +22,7 @@ alias ed="$EDITOR"
 alias sued="sudo $EDITOR"
 
 alias conf-polybar='ed $HOME/.config/polybar/config'
-alias conf-dwm='cd $HOME/.config/dwm31/ && sued config.h'
+alias conf-dwm='cd $HOME/.local/src/dwm31/ && sued config.h'
 alias conf-picom='ed $HOME/.config/picom/picom.conf'
 
 alias conf-waybar='ed $HOME/.config/waybar/config'

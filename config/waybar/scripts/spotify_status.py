@@ -44,18 +44,20 @@ args = parser.parse_args()
 
 def fix_string(string):
     # corrects encoding for the python version used
-    string = string.replace("&", "&amp;")
-    string = string.replace("\"", '\\"')
-    string = string.replace("\'", "\\'")
-    
     if sys.version_info.major == 3:
         return string
     else:
         return string.encode('utf-8')
 
+def escape(string):
+    string = string.replace("&", "&amp;")
+    string = string.replace("\"", '\\"')
+    string = string.replace("\'", "\\'")
+    return string
+
 # Default parameters
 output = fix_string(u'{play_pause} {artist} - {song}')
-trunclen = 35
+trunclen = 50
 #play_pause = fix_string(u'\u23F8,\u25B6') # first character is play, second is paused
 play_pause = fix_string(u'  ,  ') # first character is play, second is paused
 
@@ -120,9 +122,8 @@ try:
 
         # print(output.format(artist=artist, song=song, play_pause=play_pause))
         text = play_pause + " " + artist + " - " + song
-        limit = 50
-        if len(text) > limit:
-            text = text[0:limit] + "..."
+        if len(text) > trunclen:
+            text = text[0:trunclen] + "..."
 
         print('{"text":"' + text +  '","class":"' + status.lower() + '","title":"' + song + '"}')
 

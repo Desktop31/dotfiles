@@ -44,15 +44,18 @@ args = parser.parse_args()
 
 def fix_string(string):
     # corrects encoding for the python version used
+    string = string.replace("&", "&amp;")
+    
     if sys.version_info.major == 3:
         return string
     else:
         return string.encode('utf-8')
 
 # Default parameters
-output = fix_string(u'{play_pause} {artist}: {song}')
+output = fix_string(u'{play_pause} {artist} - {song}')
 trunclen = 35
-play_pause = fix_string(u'\u25B6,\u23F8') # first character is play, second is paused
+#play_pause = fix_string(u'\u23F8,\u25B6') # first character is play, second is paused
+play_pause = fix_string(u'  ,  ') # first character is play, second is paused
 
 label_with_font = '%{{T{font}}}{label}%{{T-}}'
 font = args.font
@@ -114,6 +117,12 @@ try:
             song = label_with_font.format(font=font, label=song)
 
         print(output.format(artist=artist, song=song, play_pause=play_pause))
+        # text = play_pause + " " + artist + " - " + song
+        # limit = 50
+        # if len(text) > limit:
+            # text = text[0:limit] + "..."
+
+        #print('{"text":"' + text +  '","class":"' + status.lower() + '","title":"' + song + '"}')
 
 except Exception as e:
     if isinstance(e, dbus.exceptions.DBusException):

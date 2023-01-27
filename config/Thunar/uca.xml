@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<submenu></submenu>
+	<unique-id>1673976393084755-1</unique-id>
+	<command>kitty -d %f</command>
+	<description>Open directory in terminal</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>state-information</icon>
+	<name>MediaInfo</name>
+	<submenu></submenu>
+	<unique-id>1674842924591093-1</unique-id>
+	<command>mediainfo-gui %f</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<audio-files/>
+	<image-files/>
+	<video-files/>
+</action>
+</actions>

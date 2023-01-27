@@ -51,7 +51,7 @@ inputbar {
 listview {
     background-color:               @background;
     margin:                         0% 0% 0% 0%;
-    spacing:                        2%;
+    spacing:                        2.6%;
     cycle:                          true;
     dynamic:                        true;
     layout:                         horizontal;
