@@ -30,5 +30,5 @@ hyprpicker-git				A
 hyprpaper-git				A
 wdisplays					A
 waybar-hyprland-git			A
-https://github.com/hyprwm/xdg-desktop-portal-hyprland.git 	G
-https://github.com/hyprwm/Hyprland.git						G
+xdg-desktop-portal-hyprland-git 	A
+https://github.com/hyprwm/Hyprland.git		G
