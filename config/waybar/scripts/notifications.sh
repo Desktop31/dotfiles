@@ -1,6 +1,8 @@
 #!/bin/bash
 
 COUNT=$(dunstctl count waiting)
+# ENABLED=" "
+# DISABLED=" "
 ENABLED=
 DISABLED=
 if [ $COUNT != 0 ]; then DISABLED=" $COUNT"; fi

@@ -57,11 +57,12 @@ module-margin-right = 0
 ;=================
 
 font-0 = NotoSans:style=Regular:size=12:antialias=true;2
-font-1 = Material Icons:style=Regular:pixelsize=16:antialias=true;4
-font-2 = Font Awesome 6 Brands:style=Regular:size=14;3
-font-3 = Hurmit Nerd Font Mono:style=Regular:size=19;4
-font-4 = Iosevka:style=Bold:size=15:antialias=true;3
-font-5 = Unifont:style=Regular:size=12:antialias=true;3
+; Icons
+font-1 = Iosevka Nerd Font Mono:style=Bold:size=22:antialias=true;4
+; Separators
+font-2 = Iosevka Nerd Font Mono:style=Regular:size=30:antialias=true
+; Tags
+font-3 = Iosevka Nerd Font Mono:style=Regular:size=15:antialias=true;2
 
 ;=================
 ;	BAR LAYOUT
@@ -70,9 +71,10 @@ font-5 = Unifont:style=Regular:size=12:antialias=true;3
 modules-left = dwm-layout left player
 modules-center = tagsLeft dwm tagsRight
 ; --DESKTOP--
-modules-right = rightEnd pulseaudio-control rightAlt xkeyboard right memory rightAlt cpu right wlan eth rightAlt date right time rightAlt
+modules-right = rightEnd pulseaudio-control  xkeyboard  memory  cpu  wlan eth  date  time 
+;modules-right = rightEnd pulseaudio-control rightAlt xkeyboard right memory rightAlt cpu right wlan eth rightAlt date right time rightAlt
 ; --LAPTOP--
-;modules-right = rightEnd pulseaudio-control rightAlt xkeyboard right memory rightAlt cpu right wlan eth rightAlt date timeLap right battery rightAlt
+;modules-right = rightEnd pulseaudio-control xkeyboard memory cpu wlan eth date timeLap battery
 
 tray-position = right
 tray-padding = 2
@@ -95,9 +97,11 @@ type = internal/xkeyboard
 blacklist-0 = num lock
 blacklist-1 = caps lock
 
-format-prefix = " "
-;format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = " "
 format-prefix-background = ${colors.background-alt}
+format-suffix = " %{T2} %{T-}  "
+;format-prefix-foreground = ${colors.foreground-alt}
+format-suffix-background = ${colors.background-alt}
 
 ; 
 label-layout = "%{T-} %layout%"
@@ -161,27 +165,27 @@ tags-scroll-wrap = false
 ;   %name%
 
 ; focused = Selected tag on focused monitor
-label-focused = %{T2}%name%
+label-focused = %{T4}%name%
 label-focused-background = ${colors.background}
 label-focused-foreground = ${colors.primary}
 label-focused-underline= ${colors.secondary}
 label-focused-padding = 1
 
 ; unfocused = Unselected tag on unselected monitor
-label-unfocused = %{T2}%name%
+label-unfocused = %{T4}%name%
 label-unfocused-background = ${colors.background}
 label-unfocused-foreground = ${colors.primary}
 label-unfocused-underline= ${colors.secondary}
 label-unfocused-padding = 1
 
 ; visible = Unselected tag, but occupied tag on any monitor
-label-visible = %{T2}%name%
+label-visible = %{T4}%name%
 label-visible-background = ${colors.background}
 ;label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Unselected tag with window that has urgency hint set
-label-urgent = %{T2}%name%
+label-urgent = %{T4}%name%
 label-urgent-foreground = ${colors.alert}
 label-urgent-background = ${colors.background}
 label-urgent-padding = 1
@@ -232,8 +236,9 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-;
-format-prefix = " %{T4}%{T-}"
+; 
+format-prefix = " "
+format-suffix = " %{T2}%{T-}  "
 ;format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #f90000
 label = %percentage:2%%
@@ -246,7 +251,8 @@ format-background = ${colors.background-alt}
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = "%{T4}%{T-} "
+format-prefix = " "
+format-suffix = " %{T2}%{T-}  "
 ;format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #4bffdc
 label = "%percentage_used%%"
@@ -288,7 +294,8 @@ type = internal/network
 interface = eno1
 interval = 3.0
 
-format-connected-prefix = "  "
+format-prefix = " "
+format-connected-suffix = " %{T2}%{T-}  "
 label-connected = "%local_ip% "
 
 format-disconnected =
@@ -307,7 +314,8 @@ interval = 1
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix = " %{T4}%{T-} "
+format-prefix = " "
+format-suffix = " %{T2}%{T-}  "
 format-background = ${colors.background}
 
 label = "%time% "
@@ -321,12 +329,13 @@ type = internal/date
 interval = 1
 
 time = %H:%M
-time-alt = %H:%M:%S
+time-alt = %d.%m.%Y
 
-format-prefix = " %{T4}%{T-} "
+format-prefix = " "
+format-suffix = " %{T2}%{T-}  "
 format-background = ${colors.background-alt}
 
-label = "%time% "
+label = "%time% %date"
 
 ;=======================
 ;		DATE
@@ -339,7 +348,8 @@ interval = 5
 date = "%d.%m.%Y"
 date-alt = "%d.%m."
 
-format-prefix = " %{T4}%{T-} "
+format-prefix = " "
+format-suffix = " %{T2}%{T-}  "
 format-background = ${colors.background-alt}
 
 label = "%date%"
@@ -351,6 +361,8 @@ label = "%date%"
 [module/pulseaudio]
 type = internal/pulseaudio
 
+format-prefix = " "
+format-suffix = "  "
 format-volume = <label-volume> <bar-volume>
 format-volume-background = ${colors.background-alt}
 label-volume = VOL %percentage%%
@@ -513,8 +525,8 @@ margin-bottom = 0
 [module/player]
 type = custom/script
 interval = 1
-format-prefix = %{T4}%{T-}
-format-suffix = %{T4}%{T-}
+format-prefix = %{T3}%{T-}
+format-suffix = %{T3}%{T-}
 format = "<label>"
 exec = python ~/.config/polybar/scripts/spotify_status.py -f '{play_pause} {artist} - {song}' -p "," --font=1
 ;exec = playerctl metadata --format "{{emoji(status)}} {{trunc(title,15)}} - {{ trunc(artist,10) }}"
@@ -552,7 +564,7 @@ label-background = ${colors.background}
 # --sink-blacklist is only needed for next-sink).
 
 # EDIT THIS FOR EACH CONFIG
-exec = pulseaudio-control --icons-volume " ,  , " --icon-muted " " --node-nicknames-from "device.description" --node-nickname "alsa_output.pci-0000_0a_00.4.analog-stereo/analog-output-lineout: Headphones" --node-nickname "alsa_output.pci-0000_0a_00.4.analog-stereo/analog-output-headphones:Speakers" --node-nickname "RpiTunnel: RPi Tunnel" listen
+exec = pulseaudio-control --icons-volume " ,  , " --icon-muted " " --node-nicknames-from "device.description" --node-nickname "alsa_output.pci-0000_0a_00.4.analog-stereo/analog-output-lineout: Headphones" --node-nickname "alsa_output.pci-0000_0a_00.4.analog-stereo/analog-output-headphones:Speakers" --node-nickname "RPiTunnel: RPi Tunnel" listen
 click-right = exec pavucontrol &
 click-left = pulseaudio-control togmute
 click-middle = pulseaudio-control --node-blacklist  "alsa_output.pci-0000_08_00.1.hdmi-stereo","VirtualMic","VoiceChat_IN","Output_IN","control.endpoint.multimedia","control.endpoint.communication" next-node
@@ -566,38 +578,38 @@ scroll-down = pulseaudio-control --volume-max 100 up
 ;     
 [module/left]
 type = custom/text
-content = "%{T4}%{T-}"
+content = "%{T3}%{T-}"
 content-foreground = ${colors.background-alt}
 
 [module/right]
 type = custom/text
-content = " %{T4}%{T-}"
+content = " %{T3}%{T-}"
 content-background = ${colors.background-alt}
 content-foreground = ${colors.background}
 
 [module/rightEnd]
 type = custom/text
-content = "%{T4}%{T-}"
+content = "%{T3}%{T-}"
 content-foreground = ${colors.background}
 
 [module/rightAlt]
 type = custom/text
-content = "%{T4}%{T-}"
+content = "%{T3}%{T-}"
 content-background = ${colors.background}
 content-foreground = ${colors.background-alt}
 
 [module/rightAltEnd]
 type = custom/text
-content = "%{T4}%{T-}"
+content = "%{T3}%{T-}"
 content-foreground = ${colors.background-alt}
 
 [module/tagsRight]
 type = custom/text
-content = "%{T4}%{T-}"
+content = "%{T3}%{T-}"
 content-foreground = ${colors.background}
 
 [module/tagsLeft]
 type = custom/text
-content = "%{T4}%{T-}"
+content = "%{T3}%{T-}"
 content-foreground = ${colors.background}
 

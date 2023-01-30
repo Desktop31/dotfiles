@@ -1,6 +1,10 @@
 {
+// change icon font size:							change here:   v           v
+// sed -Ei "s/<span font='[0-9]*px' rise='\-?[0-9]*'>/<span font='16px' rise='-500'>/m" ./config
+
     "layer": "top",
     "position": "top",
+	"height": 42,
 
     // Choose the order of the modules
     "modules-left": ["custom/media", "hyprland/window", "custom/sepRight"],
@@ -17,7 +21,7 @@
     },
     "cpu": {
         "interval": 10,
-        "format": "{usage}%  ",
+        "format": "{usage}% <span font='16px' rise='-500'> </span>",
         "max-length": 10
     },
     "tray": {
@@ -34,24 +38,26 @@
     },
     "pulseaudio": {
         "format": "{icon} {volume}% {desc}",
-        "format-bluetooth": "{icon}   {volume}% {desc}",
-        "format-bluetooth-muted": "   {volume}% {desc}",
-        "format-muted": "  {volume}% {desc}",
+        "format-bluetooth": "{icon}  <span font='16px' rise='-500'></span> {volume}% {desc}",
+        "format-bluetooth-muted": "<span font='16px' rise='-500'>  </span> {volume}% {desc}",
+        "format-muted": "<span font='16px' rise='-500'> </span> {volume}% {desc}",
         "format-icons": {
-          "headphone": "",
-          "hands-free": "",
-          "headset": "",
-          "phone": "",
-          "portable": "",
-          "car": "",
-          "default": ["  ", "  ", "  "]
+          "headphone": "<span font='16px' rise='-500'></span>",
+          "hands-free": "<span font='16px' rise='-500'></span>",
+          "headset": "<span font='16px' rise='-500'></span>",
+          "phone": "<span font='16px' rise='-500'></span>",
+          "portable": "<span font='16px' rise='-500'></span>",
+          "car": "<span font='16px' rise='-500'></span>",
+          "default": ["<span font='16px' rise='-500'> </span>", 
+          			  "<span font='16px' rise='-500'> </span>", 
+          			  "<span font='16px' rise='-500'> </span>"]
         },
         "on-click": "pulseaudio-control togmute",
         "on-click-right": "pkill pavucontrol || pavucontrol",
         "on-click-middle": "pulseaudio-control --node-blacklist  'VirtualMic','VoiceChat_IN','Output_IN','control.endpoint.multimedia','control.endpoint.communication' next-node",
         "on-scroll-up": "pulseaudio-control --volume-max 100 down",
         "on-scroll-down": "pulseaudio-control --volume-max 100 up",
-        "tooltip": true,
+        "tooltip": false,
     },
     "custom/media": {
         "format": "{}",
@@ -80,11 +86,12 @@
     },
     "memory": {
         "interval": 30,
-        "format": "{used:0.1f}G/{total:0.1f}G  ",
+        "format": "{used:0.1f}G/{total:0.1f}G <span font='16px' rise='-500'> </span>",
         "on-click": "killall gnome-system-monitor || gnome-system-monitor -r"
     },
     "custom/notifications": {
         "restart-interval": 1,
+        "format": "<span font='16px' rise='-500'>{}</span>",
         "exec": "~/.config/waybar/scripts/notifications.sh",
         "on-click": "dunstctl history-pop",
         "on-click-right": "dunstctl close",
@@ -92,22 +99,25 @@
         "tooltip": false,
     },
     "custom/sepRight": {
-    	"format": " ",
+    	"format": "  ",
     	"tooltip": false
     },
     "custom/sepRight-alt": {
-    	"format": " ",
+    	"format": "  ",
     	"tooltip": false
     },
     "custom/sepLeft": {
-    	"format": "",
+    	"format": " ",
     	"tooltip": false
     },
     "custom/sepLeft-alt": {
-    	"format": "",
+    	"format": " ",
     	"tooltip": false
     }
 
-    //                           
-    //                   
+    //                             
+    //               
+	//               
+	//             
+
 }
