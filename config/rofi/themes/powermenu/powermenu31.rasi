@@ -49,7 +49,7 @@ inputbar {
 
 listview {
     enabled:                     true;
-    columns:                     5;
+    columns:                     6;
     lines:                       1;
     cycle:                       true;
     dynamic:                     true;
@@ -96,12 +96,12 @@ element {
 }
 
 element-text {
-    font:                        "feather bold 32";
+    font:                        "Iosevka Nerd Font 32";
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
     vertical-align:              0.5;
-    horizontal-align:            0.5;
+    horizontal-align:            0.43;
 }
 
 element normal.urgent,

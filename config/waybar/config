@@ -1,6 +1,6 @@
 {
 // change icon font size:							change here:   v           v
-// sed -Ei "s/<span font='[0-9]*px' rise='\-?[0-9]*'>/<span font='16px' rise='-500'>/m" ./config
+// sed -Ei "s/<span font='[0-9]*px' rise='\-?[0-9]*'>/<span font='25px' rise='-4000'>/m" ./config
 
     "layer": "top",
     "position": "top",
@@ -21,7 +21,7 @@
     },
     "cpu": {
         "interval": 10,
-        "format": "{usage}% <span font='16px' rise='-500'> </span>",
+        "format": "{usage}% <span font='25px' rise='-4000'></span>",
         "max-length": 10
     },
     "tray": {
@@ -38,19 +38,19 @@
     },
     "pulseaudio": {
         "format": "{icon} {volume}% {desc}",
-        "format-bluetooth": "{icon}  <span font='16px' rise='-500'></span> {volume}% {desc}",
-        "format-bluetooth-muted": "<span font='16px' rise='-500'>  </span> {volume}% {desc}",
-        "format-muted": "<span font='16px' rise='-500'> </span> {volume}% {desc}",
+        "format-bluetooth": "{icon}  <span font='25px' rise='-4000'></span> {volume}% {desc}",
+        "format-bluetooth-muted": "<span font='25px' rise='-4000'> </span> {volume}% {desc}",
+        "format-muted": "<span font='25px' rise='-4000'></span> {volume}% {desc}",
         "format-icons": {
-          "headphone": "<span font='16px' rise='-500'></span>",
-          "hands-free": "<span font='16px' rise='-500'></span>",
-          "headset": "<span font='16px' rise='-500'></span>",
-          "phone": "<span font='16px' rise='-500'></span>",
-          "portable": "<span font='16px' rise='-500'></span>",
-          "car": "<span font='16px' rise='-500'></span>",
-          "default": ["<span font='16px' rise='-500'> </span>", 
-          			  "<span font='16px' rise='-500'> </span>", 
-          			  "<span font='16px' rise='-500'> </span>"]
+          "headphone": "<span font='25px' rise='-4000'></span>",
+          "hands-free": "<span font='25px' rise='-4000'></span>",
+          "headset": "<span font='25px' rise='-4000'></span>",
+          "phone": "<span font='25px' rise='-4000'></span>",
+          "portable": "<span font='25px' rise='-4000'></span>",
+          "car": "<span font='25px' rise='-4000'></span>",
+          "default": ["<span font='25px' rise='-4000'></span>", 
+          			  "<span font='25px' rise='-4000'></span>", 
+          			  "<span font='25px' rise='-4000'></span>"]
         },
         "on-click": "pulseaudio-control togmute",
         "on-click-right": "pkill pavucontrol || pavucontrol",
@@ -86,12 +86,12 @@
     },
     "memory": {
         "interval": 30,
-        "format": "{used:0.1f}G/{total:0.1f}G <span font='16px' rise='-500'> </span>",
+        "format": "{used:0.1f}G/{total:0.1f}G <span font='25px' rise='-4000'></span>",
         "on-click": "killall gnome-system-monitor || gnome-system-monitor -r"
     },
     "custom/notifications": {
         "restart-interval": 1,
-        "format": "<span font='16px' rise='-500'>{}</span>",
+        "format": "<span font='25px' rise='-4000'>{}</span>",
         "exec": "~/.config/waybar/scripts/notifications.sh",
         "on-click": "dunstctl history-pop",
         "on-click-right": "dunstctl close",
@@ -99,23 +99,23 @@
         "tooltip": false,
     },
     "custom/sepRight": {
-    	"format": "  ",
+    	"format": "",
     	"tooltip": false
     },
     "custom/sepRight-alt": {
-    	"format": "  ",
+    	"format": "",
     	"tooltip": false
     },
     "custom/sepLeft": {
-    	"format": " ",
+    	"format": "",
     	"tooltip": false
     },
     "custom/sepLeft-alt": {
-    	"format": " ",
+    	"format": "",
     	"tooltip": false
     }
 
-    //                             
+    //                              
     //               
 	//               
 	//             
