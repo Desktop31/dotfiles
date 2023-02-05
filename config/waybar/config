@@ -9,7 +9,14 @@
     // Choose the order of the modules
     "modules-left": ["custom/media", "hyprland/window", "custom/sepRight"],
     "modules-center": ["custom/sepLeft", "wlr/workspaces", "custom/sepRight"],
-    "modules-right": ["custom/sepLeft", "pulseaudio", "memory", "cpu", "hyprland/language", "custom/notifications", "clock", "tray"],
+
+	// Desktop
+   	// "modules-right": ["custom/sepLeft", "pulseaudio", "memory", "cpu", "hyprland/language", "custom/notifications", "clock", "tray"],
+
+	// Laptop 
+	// Edit battery in battery and baterry#power modules (ls /sys/class/power_supply)
+	// Edit interface in network module (ip addr)
+    "modules-right": ["custom/sepLeft", "pulseaudio", "network", "battery#power", "battery", "hyprland/language", "custom/notifications", "clock", "tray"],
 
     // Modules configuration
     "wlr/workspaces": {
@@ -23,6 +30,41 @@
         "interval": 10,
         "format": "{usage}% <span font='25px' rise='-4000'></span>",
         "max-length": 10
+    },
+    "network": {
+        "interface": "wlp0s20f3",
+        "format": "{ifname}",
+        "format-wifi": "{essid} ",
+        "format-ethernet": "",
+        "format-disconnected": "", //An empty format will hide the module.
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "tooltip-format-wifi": "{ipaddr} ({signalStrength}%)",
+        "tooltip-format-ethernet": "{ifname} {ipaddr} ",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 30
+    },
+    "battery": {
+    	"bat": "BAT0",
+    	"adapter": "ADP0",
+    	"interval": 60,
+    	"states": {
+    		"warning": 30,
+    		"critical": 10,
+    	},
+    	"format": "{capacity}% {icon}",
+    	"format-icons": {
+    		"charging": [""],
+    		"default": ["", "", "", "", "", "", "", "", "", "", ""],
+    		"critical": [""],
+    	},
+    	"max-length": 25,
+    },
+    "battery#power": {
+    	"bat": "BAT0",
+    	"interval": 10,
+    	"format-charging": "+{power}W ",
+    	"format": "-{power}W ",
+    	"max-length": 25,
     },
     "tray": {
         "icon-size": 18,
@@ -116,8 +158,8 @@
     }
 
     //                              
-    //               
-	//               
-	//             
+    //                  
+	//                  
+	//                     
 
 }
