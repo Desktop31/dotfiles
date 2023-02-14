@@ -13,6 +13,7 @@ set ignoredia true
 set drawbox true
 set incsearch true
 set incfilter true
+set relativenumber true
 
 set promptfmt "\033[1;43;30m %u \033[0;100;33m \033[1;100;3;33m%d%f \033[0;90m \033[0m"
 set errorfmt "\033[97;41m %s \033[0;31m \033[0m"

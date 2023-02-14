@@ -1,0 +1,209 @@
+default partial alphanumeric_keys modifier_keys
+
+xkb_keymap {
+  xkb_keycodes {
+    include "evdev+aliases(qwerty)"
+  };
+
+  xkb_types {
+    include "complete"
+  };
+
+  xkb_compat {
+    include "complete"
+  };
+
+  // xkb_symbols {
+    // include "pc+us(cz_sk_de)+inet(evdev)"
+  // };
+
+  xkb_symbols {
+    include "pc+us(cz_sk_de)+inet(evdev)"
+    name[Group1] = "US/CZ Caps";
+
+    // Group switching
+    key.type = "FOUR_LEVEL";
+    key <PRSC> { [ Multi_key, ISO_Next_Group, ISO_Prev_Group ] };
+
+    // NBSP
+    key.type = "FOUR_LEVEL";
+    key <SPCE> { [ space, nobreakspace, nobreakspace, nobreakspace ] };
+
+    //// Group 1 ////
+
+    // Alphabetic key mappings
+    key.type = "FOUR_LEVEL";
+    key <AC05> { [ g, G, leftdoublequotemark, leftsinglequotemark ] };
+    key <AC06> { [ h, H, rightdoublequotemark, rightsinglequotemark ] };
+    key <AB04> { [ v, V, doublelowquotemark, singlelowquotemark ] };
+    key <AC10> { [ semicolon, colon, uring, Uring ] };
+    key <AD11> { [ bracketleft, braceleft, uacute, Uacute ] };
+    key <AC11> { [ apostrophe, quotedbl, U2026, section ] }; // U2026 — Hor. ellipsis
+    key <AC07> { [ j, J, U2193, U21D3 ] }; // U2193 — down arrow; U21D3 — double down arrow
+    key <AC08> { [ k, K, U2191, U21D1 ] }; // U2191 — up arrow; U21D1 — double up arrow
+    // ↓↓↓ Empty level below ↓↓↓
+    key <AC09> { [ l, L, U22EE ] }; // U22EE — vertical ellipsis
+    // ↓↓↓ Empty level below ↓↓↓
+    key <AD10> { [ p, P, U03C0 ] }; // U03C0 — greek small pi
+
+    // Compose key
+    key.type = "ONE_LEVEL";
+    // above //key <PRSC> { [ Multi_key ] };
+
+    // Hex numpad   │
+    //            ╭─╯
+    // ┏━┳┳━━━━━━━┻━━━━━━━━┓
+    // ┣━┻┻━┯━━━━┯━━━━┯━━━━┫  Modifiers:
+    // ┃    │    │    │    ┃  
+    // ┃   ⇩│÷  /│✕  *│   -┃  ┏━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━┓
+    // ┠────┼────┼────┼────┨  ┃ AltGr + Shift │ Shift         ┃
+    // ┃A   │B   │C   │    ┃  ┠───────────────┼───────────────┨
+    // ┃a  7│b  8│c  9│    ┃  ┃ AltGr         │ (none)        ┃
+    // ┠────┼────┼────┤T   ┃  ┗━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━┛
+    // ┃D   │E   │F   │A   ┃
+    // ┃d  4│e  5│f  6│B  +┃
+    // ┠────┼────┼────┼────┨
+    // ┃;   │    │NB  │    ┃
+    // ┃:  1│x  2│SP 3│    ┃
+    // ┠────┴────┼────┤   R┃
+    // ┃         │,   │   E┃
+    // ┃        0│.  .│=  T┃
+    // ┗━━━━━━━━━┷━━━━┷━━━━┛
+    key.type = "FOUR_LEVEL_MIXED_KEYPAD";
+    key <KP1> { [ KP_End, KP_1, colon, semicolon ] };
+    key <KP2> { [ KP_Down, KP_2, x ] };
+    key <KP3> { [ KP_Next, KP_3, space, nobreakspace ] };
+
+    key <KP4> { [ KP_Left, KP_4, d, D ] };
+    key <KP5> { [ NoSymbol, KP_5, e, E ] };
+    key <KP6> { [ KP_Right, KP_6, f, F ] };
+
+    key <KP7> { [ KP_Home, KP_7, a, A ] };
+    key <KP8> { [ KP_Up, KP_8, b, B ] };
+    key <KP9> { [ KP_Prior, KP_9, c, C ] };
+
+    key <KPEN> { [ KP_Enter, KP_Enter, KP_Equal ] };
+    key <KPDL> { [ period, period, comma ] };
+    key <KPDV> { [ KP_Divide, KP_Divide, U00f7 ] };
+    key <KPMU> { [ KP_Multiply, KP_Multiply, U2715 ] };
+    key <KPAD> { [ KP_Add, KP_Add, Tab ] };
+
+    
+  //// Group 2 ////
+
+    // Box drawing keypad
+    //
+    // ⇩  /│ *  -- (minus becomes horizontal line)
+    // 7┌ 8┬ 9┐ SP (plus becomes space)
+    // 4├ 5┼ 6┤
+    // 1└ 2┴ 3┘ 
+    //
+    // No modifiers      Thin lines     ├┼┤
+    // Shift/NumLockOff  Thicker lines  ┣╋┫
+    // AltGr             Double lines   ╠╬╣
+    // AltGr+Shift       Special lines  ╭╮╰╯┠┨┯┷
+    key <KP1> {
+      type[Group2] = "FOUR_LEVEL_MIXED_KEYPAD",
+      symbols[Group2] = [
+        U2517,
+        U2514,
+        U255A,
+        U2570
+      ]
+    };
+    key <KP2> {
+      type[Group2] = "FOUR_LEVEL_MIXED_KEYPAD",
+      symbols[Group2] = [
+        U253B,
+        U2534,
+        U2569,
+        U2537
+      ]
+    };
+    key <KP3> {
+      type[Group2] = "FOUR_LEVEL_MIXED_KEYPAD",
+      symbols[Group2] = [
+        U251b,
+        U2518,
+        U255d,
+        U256f
+      ]
+    };
+    key <KP4> {
+      type[Group2] = "FOUR_LEVEL_MIXED_KEYPAD",
+      symbols[Group2] = [
+        U2523,
+        U251c,
+        U2560,
+        U2520
+      ]
+    };
+    key <KP5> {
+      type[Group2] = "FOUR_LEVEL_MIXED_KEYPAD",
+      symbols[Group2] = [
+        U254b,
+        U253c,
+        U256c
+      ]
+    };
+    key <KP6> {
+      type[Group2] = "FOUR_LEVEL_MIXED_KEYPAD",
+      symbols[Group2] = [
+        U252b,
+        U2524,
+        U2563,
+        U2528
+      ]
+    };
+    key <KP7> {
+      type[Group2] = "FOUR_LEVEL_MIXED_KEYPAD",
+      symbols[Group2] = [
+        U250f,
+        U250c,
+        U2554,
+        U256d
+      ]
+    };
+    key <KP8> {
+      type[Group2] = "FOUR_LEVEL_MIXED_KEYPAD",
+      symbols[Group2] = [
+        U2533,
+        U252c,
+        U2566,
+        U252f
+      ]
+    };
+    key <KP9> {
+      type[Group2] = "FOUR_LEVEL_MIXED_KEYPAD",
+      symbols[Group2] = [
+        U2513,
+        U2510,
+        U2557,
+        U256e
+      ]
+    };
+    key <KPDV> {
+      type[Group2] = "FOUR_LEVEL_MIXED_KEYPAD",
+      symbols[Group2] = [
+        U2503,
+        U2502,
+        U2551
+      ]
+    };
+    key <KPSU> {
+      type[Group2] = "FOUR_LEVEL_MIXED_KEYPAD",
+      symbols[Group2] = [
+        U2501,
+        U2500,
+        U2550
+      ]
+    };
+    key <KPAD> {
+      type[Group2] = "ONE_LEVEL",
+      symbols[Group2] = [ space ]
+    };
+
+    include "level3(ralt_switch)"
+  };
+
+};

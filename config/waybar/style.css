@@ -8,11 +8,19 @@
 
 /* Waybar */
 window#waybar {
-  background-color: rgba(30, 30, 46, 0);
+  /* background-color: rgba(44, 44, 44, 0.5); */
+  background-color: transparent;
   color: @subtext;
   transition-property: background-color;
   transition-duration: 0.5s;
   /* border-radius: 0px 0px 10px 10px; */
+}
+
+window#waybar > box {
+    border-radius: 3px;
+    margin: 0px 0px 3px 0px;
+    background-color: rgba(44, 44, 44, 0.5);
+    box-shadow: 0px 1px 3px 1px rgba(44, 44, 44, 0.5);
 }
 
 /* Modules */
@@ -32,7 +40,7 @@ window#waybar {
   padding-left: 8px;
   padding-right: 8px;
   /* margin-top: 5px; */
-  margin-bottom: 5px; 
+  /* margin-bottom: 5px; */
   /* margin-left: 10px; */
   /* margin-right: 2px; */
   transition-duration: 0.2s;
@@ -45,7 +53,7 @@ window#waybar {
 /* Workspaces */
 #workspaces {
   background-color: @bg;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
   transition-duration: 0.2s;
 }
 
@@ -198,7 +206,7 @@ window#waybar {
 	font-family: Iosevka Nerd Font Bold; 
 	font-size: 30px; 
 	/* padding-right: 6px; */
-	margin-bottom: 5px; 
+  /* margin-bottom: 5px; */
 }
 
 #custom-sepRight, 
@@ -210,3 +218,6 @@ window#waybar {
 #custom-sepLeft-alt {
 	color: @bg-alt;
 }
+
+
+
