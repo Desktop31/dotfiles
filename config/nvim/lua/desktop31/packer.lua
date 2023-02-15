@@ -18,8 +18,7 @@ return require('packer').startup(function(use)
         as = 'vscode',
         config = function()
             vim.cmd('colorscheme vscode')
-            local c = require('vscode.colors').get_colors()
-            require('vscode').setup({
+            local c = require('vscode.colors').get_colors() require('vscode').setup({
                 -- Enable transparent background
                 transparent = true,
 
@@ -88,5 +87,9 @@ return require('packer').startup(function(use)
             require('Comment').setup()
         end
     }
+
+    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+        require("toggleterm").setup()
+    end}
 
 end)
