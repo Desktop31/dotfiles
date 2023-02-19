@@ -42,8 +42,8 @@ greeter:
 # A layout value is composed in the main layout, like "us" or "latam", and its variant, like "dvorak", "colemak", "mac" or "mac_intl"
 #
 layouts:
-    - cz-qwertz
     - us
+    - cz-qwertz
 
 #
 # features:
