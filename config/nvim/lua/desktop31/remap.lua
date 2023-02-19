@@ -19,9 +19,6 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
--- This is going to get me cancelled
-vim.keymap.set("i", "<C-c>", "<Esc>")
-
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
@@ -33,7 +30,7 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
-vim.keymap.set("n", "<leader>t", "<Cmd>:ToggleTerm size=100 dir=./ direction=vertical<CR>")
+vim.keymap.set("n", "<leader>t", "<Cmd>:ToggleTerm size=115 dir=./ direction=vertical<CR>")
 function _G.set_terminal_keymaps()
   local opts = {buffer = 0}
   vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
@@ -47,3 +44,14 @@ end
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 vim.keymap.set("n", "<C-l>", [[<Cmd>wincmd l<CR>]])
+
+-- Markdown previewer
+vim.keymap.set("n", "<leader>md", "<cmd>MarkdownPreviewToggle<CR>")
+
+-- Buffer navigation
+vim.keymap.set("n", "<C-Tab>", "<cmd>bnext<CR>")
+vim.keymap.set("n", "<C-S-Tab>", "<cmd>bprev<CR>")
+
+-- Close current buffer
+vim.keymap.set("n", "<C-c>", "<cmd>bd<CR>")
+
