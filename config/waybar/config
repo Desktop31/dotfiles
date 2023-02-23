@@ -80,8 +80,16 @@
         "timezone": "Europe/Prague",
         "interval": 1,
         "format": "{:%H:%M}",
-        "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+        "tooltip-format": "<big><b>{:%d-%m-%Y}</b></big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%H:%M:%S}",
+        "calendar": {
+                    "format": {
+                            "months": "",
+                            "weekdays": "<span weight='bold'>{}</span>",
+                            "days": "<span weight='normal'>{}</span>",
+                            "today": "<span background='#9E891B' color='#2c2c2c'><b>{}</b></span>",
+                    }
+        },
         "on-click-right": "pkill gnome-calendar || gnome-calendar"
     },
     "pulseaudio": {
