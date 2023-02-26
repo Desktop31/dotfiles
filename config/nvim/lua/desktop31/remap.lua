@@ -30,7 +30,7 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
-vim.keymap.set("n", "<leader>t", "<Cmd>:ToggleTerm size=115 dir=./ direction=vertical<CR>")
+vim.keymap.set("n", "<leader>t", "<Cmd>:ToggleTerm size=85 dir=./ direction=vertical<CR>")
 function _G.set_terminal_keymaps()
   local opts = {buffer = 0}
   vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
@@ -53,5 +53,5 @@ vim.keymap.set("n", "<C-Tab>", "<cmd>bnext<CR>")
 vim.keymap.set("n", "<C-S-Tab>", "<cmd>bprev<CR>")
 
 -- Close current buffer
-vim.keymap.set("n", "<C-c>", "<cmd>bd<CR>")
+vim.keymap.set("n", "<leader>q", "<cmd>bd<CR>")
 
