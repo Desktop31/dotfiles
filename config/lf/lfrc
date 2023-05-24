@@ -96,12 +96,14 @@ cmd restore_trash ${{
   trash-restore
 }}
 
+cmd open_thunar ${{
+  thunar $PWD &; disown
+}}
 
 # -- Bindings --
 
 # Remove some defaults
 map m
-map o
 map n
 map "'"
 map '"'
@@ -126,6 +128,8 @@ map F setfilter ""
 
 map mk mkfile
 map md mkdir
+
+map ot open_thunar
 
 map git ${{clear; git status; echo "press ENTER"; read ENTER}}
 
