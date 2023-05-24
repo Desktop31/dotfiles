@@ -100,6 +100,49 @@ cmd open_thunar ${{
   thunar $PWD &; disown
 }}
 
+cmd media_info !{{
+  mediainfo $(printf "$fx")
+}}
+
+cmd dragon_drop %{{
+  echo $fx | dragon --and-exit --all --stdin
+}}
+
+cmd dragon_download ${{
+    url="$(dragon -t -x)"
+
+    if [[ -z "$url" ]]; then
+        exit 1
+    fi
+    
+    printf "Filename: "
+    filename=""
+
+    while [[ -z "$filename" || -e "$filename" ]]; do
+        read -r filename
+
+        if [[ -e "$filename" ]]; then
+            printf "File exists, overwrite? [y|N]"
+            read -r ans
+
+            if [[ 
+                "$ans" == "y" || 
+                "$ans" == "Y" || 
+                "$ans" == "yes" ]]; then
+                    break
+                else
+                    printf "Filename: "
+            fi
+        fi
+    done
+
+    if [[ -n "$filename" ]]; then
+        curl -o "$filename" "$url" || exit 1
+    else
+        exit 1
+    fi
+}}
+
 # -- Bindings --
 
 # Remove some defaults
@@ -126,8 +169,15 @@ map <enter> shell
 map f filter
 map F setfilter ""
 
+map sd calcdirsize
+
 map mk mkfile
 map md mkdir
+
+map dr dragon_drop # DRagon
+map dl dragon_download # Dragon downLoad
+
+map ia media_info # Info All
 
 map ot open_thunar
 
