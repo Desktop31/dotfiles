@@ -138,3 +138,5 @@ map gd cd ~/Downloads
 map gD cd ~/Documents
 map gp cd ~/Pictures
 map gv cd ~/Videos
+map gf cd ~/Files
+map gs cd ~/.local/src
