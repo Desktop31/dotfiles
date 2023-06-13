@@ -13,35 +13,9 @@ return require('packer').startup(function(use)
         requires = { {'nvim-lua/plenary.nvim'} }
     }
 
-    use {
-        'Mofiqul/vscode.nvim',
-        as = 'vscode',
-        config = function()
-            vim.cmd('colorscheme vscode')
-            local c = require('vscode.colors').get_colors() require('vscode').setup({
-                -- Enable transparent background
-                transparent = true,
-
-                -- Enable italic comment
-                italic_comments = true,
-
-                -- Disable nvim-tree background color
-                disable_nvimtree_bg = true,
-
-                -- Override colors (see ./lua/vscode/colors.lua)
-                color_overrides = {
-                    vscBack = '#FFFFFF',
-                },
-
-                -- Override highlight groups (see ./lua/vscode/theme.lua)
-                group_overrides = {
-                    -- this supports the same val table as vim.api.nvim_set_hl
-                    -- use colors from this colorscheme by requiring vscode.colors!
-                    Cursor = { fg=c.vscDarkBlue, bg=c.vscLightGreen, bold=true },
-                }
-            })
-        end
-    }
+    use 'Mofiqul/vscode.nvim'
+    use { "ellisonleao/gruvbox.nvim" }
+    use { "catppuccin/nvim", as = "catppuccin" }
 
     use("nvim-treesitter/nvim-treesitter", {run = ":TSUpdate"})
     use("nvim-treesitter/playground") 
@@ -89,7 +63,15 @@ return require('packer').startup(function(use)
     }
 
     use {"akinsho/toggleterm.nvim", tag = '*', config = function()
-        require("toggleterm").setup()
+        require("toggleterm").setup{
+            -- highlights = {
+            --     Normal = {
+            --         guibg = ""
+            --     }
+            -- }
+
+            shading_factor = '-30'
+        }
     end}
 
     use({
@@ -98,5 +80,7 @@ return require('packer').startup(function(use)
     })
 
     -- use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+
+    use "bohlender/vim-smt2"
 
 end)

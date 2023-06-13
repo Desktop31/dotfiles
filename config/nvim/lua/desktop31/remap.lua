@@ -14,9 +14,11 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- next greatest remap ever : asbjornHaland
+-- copy to system clipboard
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
+-- delete without copying
 vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
 vim.keymap.set("n", "Q", "<nop>")
@@ -30,7 +32,7 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
-vim.keymap.set("n", "<leader>t", "<Cmd>:ToggleTerm size=85 dir=./ direction=vertical<CR>")
+vim.keymap.set("n", "<leader>t", "<Cmd>:ToggleTerm size=115 dir=./ direction=vertical<CR>")
 function _G.set_terminal_keymaps()
   local opts = {buffer = 0}
   vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
@@ -54,4 +56,11 @@ vim.keymap.set("n", "<C-S-Tab>", "<cmd>bprev<CR>")
 
 -- Close current buffer
 vim.keymap.set("n", "<leader>q", "<cmd>bd<CR>")
+
+-- Subway Surfers
+vim.keymap.set("n", "<leader>ss", "<Cmd>:TermExec cmd='mpv --vo=tct ~/Media/Funny/SubSurf.webm' size=60 dir=./ direction=vertical<CR>")
+-- vim.keymap.set("n", "<leader>ss", "<Cmd>:TermExec cmd='mpv --start=01:35 --ytdl-format=242 --ytdl https://youtu.be/nNGQ7kMhGuQ --vo=tct' size=60 dir=./ direction=vertical<CR>")
+
+-- Minecraft Parkour
+vim.keymap.set("n", "<leader>mp", "<Cmd>:TermExec cmd='mpv --ytdl-format=242 --ytdl https://youtu.be/2VpG0WS4uCo --vo=tct' size=60 dir=./ direction=vertical<CR>")
 
