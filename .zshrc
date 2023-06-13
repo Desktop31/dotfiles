@@ -32,6 +32,9 @@ alias conf-keys='ed $HOME/.config/hypr/keybinds.conf'
 alias conf-monitors='ed $HOME/.config/hypr/monitors.conf'
 alias conf-autostart='ed $HOME/.config/hypr/autostart.conf'
 
+alias lg='lazygit'
+alias ls='ls -1 --color=auto'
+
 # -- LF config - last dir --
 source "${XDG_CONFIG_HOME:-$HOME/.config}/lf/lf-shellcd/lf-shellcd"
 
@@ -63,8 +66,8 @@ ffcompress() {
 
     if [[ $newExtension == "mp4" ]]; then
         ffmpeg -i "$filename.$extension" -vcodec libx264 -crf $crfval ${2:-$newFilename}
-    elif [[ $extension == "mp4" && $newExtension == "webm" ]]; then
-        ffmpeg -i "$filename.$extension" -vcodec libvpx -acodec libvorbis -cpu-used 5 -threads 8 -crf $crfval ${2:-$newFilename}
+    # elif [[ $extension == "mp4" && $newExtension == "webm" ]]; then
+    #     ffmpeg -i "$filename.$extension" -vcodec libvpx -acodec libvorbis -cpu-used 5 -threads 8 -crf $crfval ${2:-$newFilename}
     else
         ffmpeg -i "$filename.$extension" -crf $crfval ${2:-$newFilename}
     fi
