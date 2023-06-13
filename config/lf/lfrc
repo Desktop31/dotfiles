@@ -104,6 +104,12 @@ cmd media_info !{{
   mediainfo $(printf "$fx")
 }}
 
+# TODO: customize using --Inform param
+# https://manpages.ubuntu.com/manpages/bionic/man1/mediainfo.1.html
+# cmd media_info_brief !{{
+#   mediainfo $(printf "$fx")
+# }}
+
 cmd dragon_drop %{{
   echo $fx | dragon --and-exit --all --stdin
 }}
@@ -143,6 +149,13 @@ cmd dragon_download ${{
     fi
 }}
 
+cmd bulk_rename ${{
+    # removes absolute path
+    vimv $(while IFS=$'\n' read -r line; do printf '%s\n' "$(basename $line)" ; done <<< "$fs")
+    # keeps absolute path
+    # vimv $fs
+}}
+
 # -- Bindings --
 
 # Remove some defaults
@@ -177,7 +190,10 @@ map md mkdir
 map dr dragon_drop # DRagon
 map dl dragon_download # Dragon downLoad
 
-map ia media_info # Info All
+map br bulk_rename
+
+map mi media_info # Info All
+# map ib media_info_brief # Info Brief
 
 map ot open_thunar
 
