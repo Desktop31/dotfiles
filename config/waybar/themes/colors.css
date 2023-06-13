@@ -21,7 +21,7 @@
 @define-color red            #ac2020;
 
 @define-color bg             #2c2c2c;
-@define-color bg-alt         #434343;
+@define-color bg-alt         #434343; /* #373737 | #434343 */
 
 @define-color text       @white;
 @define-color subtext    #b0b0b0;

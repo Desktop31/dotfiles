@@ -150,8 +150,16 @@ window#waybar > box {
 
 #pulseaudio.muted {
   color: @darkorange;
-  background-color: @bg;
-  transition-duration: 0.2s;
+}
+
+#pulseaudio.mic {
+  min-width: inherit;
+  padding-right: 17px;
+  color: @green;
+}
+
+#pulseaudio.mic.source-muted {
+  color: @darkorange;
 }
 
 /* Clock */
