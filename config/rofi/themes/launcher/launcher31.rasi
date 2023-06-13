@@ -7,30 +7,26 @@ configuration {
 	sidebar-mode: 					false;
 }
 
-* {
-    background-rem:                 #00000000;
-}
-
-
 window {
     transparency:                   "real";
-    background-color:               @background-rem;
+    background-color:               @none;
     text-color:                     @foreground;
 	width:							40%;
     location:                       center;
     x-offset:                       0;
     y-offset:                       0;
+    border-radius:                  12px;
 }
 
 prompt {
     enabled: 						true;
 	padding: 						0.30% 1% 0% -0.5%;
-	background-color: 				@background-alt;
+	background-color: 				@none;
 	text-color: 					@foreground;
 }
 
 entry {
-    background-color:               @background-alt;
+    background-color:               @none;
     text-color:                     @foreground;
     placeholder-color:              @foreground;
     expand:                         true;
@@ -51,7 +47,7 @@ inputbar {
 }
 
 listview {
-    background-color:               @background;
+    background-color:               @none;
     columns:                        5;
     lines:                          3;
     spacing:                        0%;
@@ -68,7 +64,7 @@ mainbox {
 }
 
 element {
-    background-color:               @background;
+    background-color:               @none;
     text-color:                     @foreground;
     orientation:                    vertical;
     border-radius:                  0%;
@@ -76,7 +72,7 @@ element {
 }
 
 element-icon {
-    background-color: 				@background-rem;
+    background-color: 				@none;
     text-color:       				inherit;
     horizontal-align:               0.5;
     vertical-align:                 0.5;
@@ -84,7 +80,7 @@ element-icon {
 }
 
 element-text {
-    background-color: 				@background-rem;
+    background-color: 				@none;
     text-color:       				inherit;
     expand:                         true;
     horizontal-align:               0.5;
