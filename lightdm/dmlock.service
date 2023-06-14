@@ -1,0 +1,9 @@
+[Unit]
+Description=DM Lock before sleep
+Before=sleep.target
+
+[Service]
+ExecStart=/etc/lightdm/suslock.sh
+
+[Install]
+WantedBy=sleep.target
