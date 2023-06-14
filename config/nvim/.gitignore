@@ -1,0 +1,12 @@
+# Blacklist files/folders in same directory as the .gitignore file
+/**
+
+!.gitignore
+
+# Whitelist some files
+# 1. !folder-name/    <-- includes the directory and top level files
+# 2. !folder-name/**  <-- includes the directory and sub level files recursively, except for the "Ignore some other system generated files" rules below
+###############################
+!after/**
+!lua/**
+!init.lua
