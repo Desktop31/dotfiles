@@ -1,0 +1,24 @@
+# Source: https://gist.github.com/jamiebergen/91a49b3c3e648031619178050122d90f
+# Ignore everything in this directory
+/**
+
+# except .gitignore
+!.gitignore
+
+# Whitelist some files
+# 1. !folder-name/    <-- includes the directory and top level files
+# 2. !folder-name/**  <-- includes the directory and sub level files recursively, except for the "Ignore some other system generated files" rules below
+#
+# Example for nvim:
+# !after/**
+# !lua/**
+# !init.lua
+###############################
+!keyboard/**
+!scripts/**
+!autostart.conf
+!hyprland.conf
+!hyprpaper.conf
+!keybinds.conf
+!monitors.conf.template
+!variables.conf
