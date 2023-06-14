@@ -73,7 +73,7 @@
     		"critical": ["󰂃"],
     	},
 
-        "on-click-middle": "exec ~/Scripts/togglePowersave",
+        "on-click-middle": "exec ~/Scripts/togglePowersave.sh",
     	"max-length"     : 25,
     },
 
