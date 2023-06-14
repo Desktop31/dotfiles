@@ -31,8 +31,8 @@ xkb_keymap {
     key <PRSC> { [ Multi_key, ISO_Next_Group, ISO_Prev_Group ] };
 
     // NBSP
-    key.type = "FOUR_LEVEL";
-    key <SPCE> { [ space, nobreakspace, nobreakspace, nobreakspace ] };
+    // key.type = "FOUR_LEVEL";
+    // key <SPCE> { [ space, nobreakspace, nobreakspace, nobreakspace ] };
 
     //// Group 1 ////
 
