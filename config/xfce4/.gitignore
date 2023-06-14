@@ -8,3 +8,4 @@
 # 2. !folder-name/**  <-- includes the directory and sub level files recursively, except for the "Ignore some other system generated files" rules below
 ###############################
 !xfconf/**
+!helpers.rc
