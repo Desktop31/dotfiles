@@ -1,25 +1,28 @@
 # Dots
-My Arch linux configuration
-
-will update readme later 
+My Arch linux configuration files
 
 ## Basic info
 - lightdm (web-greeter + neon theme)
+- pipewire + wireplumber
+- editors: micro, neovim
+- zsh shell (with oh-my-zsh)
+- kitty terminal emulator
+- Thunar
+- WebCord
+- lf (file manager)
+- Rofi app launcher + powermenu
+
+### Wayland
+- Hyprland
+- Waybar
+
+### Xorg (config no longer maintained, Wayland is the way)
 - custom patched DWM
 - polybar (polybar-dwm-module)
 - picom-animations-git
-- zsh shell (with oh-my-zsh)
-- pipewire + wireplumber
-- micro editor 
 
-<sub>and Czech keyboard :smrckaBat:</sub>
-
-## Automatic installation (WIP!)
-Run **autoinstall.sh** for automatic deployment. <br>
-The script only deploys the config files and installs my preffered packages, <br>
-it is meant to be run after Arch is fully installed, with network already set up. <br>
-<br>
-Make sure to run the script **as a user** and **from the directory** where it is located!
+## Automatic installation
+autoinstall script: https://github.com/Desktop31/autoinstall31
 
 ## Screenshot
 ![Rice preview](preview.png)
