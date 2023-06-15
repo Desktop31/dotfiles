@@ -190,7 +190,7 @@
         "interval" : "once",
         "exec-on-event" : true,
         "exec"     : "sleep 0.1; hyprctl devices | awk '/main: yes/ {print a}{a=$3}' | tail -n 1",
-        "on-click" : "killall wvkbd-mobintl || wvkbd-mobintl -L 350 --landscape-layers landscape,special,emoji"
+        "on-click" : "killall wvkbd-mobintl || wvkbd-mobintl -L 350 --landscape-layers landscape,special"
     },
 
     "memory": 
