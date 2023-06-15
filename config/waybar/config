@@ -20,7 +20,7 @@
 	// Laptop 
 	// Edit battery in battery and baterry#power modules (ls /sys/class/power_supply)
 	// Edit interface in network module (ip addr)
-    // "modules-right" : ["custom/sepLeft", "pulseaudio", "network", "battery#power", "battery", "hyprland/language", "custom/notifications", "clock", "tray"],
+    // "modules-right" : ["custom/sepLeft", "pulseaudio", "network", "battery#power", "battery", "custom/language", "custom/notifications", "clock", "tray"],
 
     // Modules configuration
     "wlr/workspaces": 
