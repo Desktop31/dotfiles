@@ -34,7 +34,7 @@ window#waybar > box {
 #bluetooth,
 #battery,
 #clock,
-#language,
+#custom-language,
 #custom-notifications,
 #window {
   padding-left: 8px;
@@ -94,7 +94,7 @@ window#waybar > box {
   transition-duration: 0.2s; 
 } 
 
-#language {
+#custom-language {
   color: @subtext;
   background-color: @bg-alt;
 }
