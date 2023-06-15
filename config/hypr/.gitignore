@@ -20,5 +20,5 @@
 !hyprland.conf
 !hyprpaper.conf
 !keybinds.conf
-!monitors.conf.template
+!local.conf.example
 !variables.conf
