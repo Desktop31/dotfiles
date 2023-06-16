@@ -43,7 +43,7 @@ source "${XDG_CONFIG_HOME:-$HOME/.config}/lf/lf-shellcd/lf-shellcd"
 alias rpicon="~/Scripts/connectRpiTunnel.sh";
 
 rpidis() {
-    MODULE=$(cat ~/Logs/tunnel-logs.txt | grep "Tunnel successfully loaded as module" | cut -f 7 -d " " | tail -n 1)
+    MODULE=$(cat ~/.logs/tunnel-logs.txt | grep "Tunnel successfully loaded as module" | cut -f 7 -d " " | tail -n 1)
     pactl unload-module $MODULE
 }
 

@@ -4,7 +4,7 @@
 # 
 # TODO: currently does not check if the tunnel actually exists on the device
 
-LOG_FOLDER="$HOME/Logs"
+LOG_FOLDER="$HOME/.logs"
 LOG_DEST="$LOG_FOLDER/tunnel-logs.txt"
 DFORMAT="+[%d.%m.%Y|%H:%M:%S]"
 
