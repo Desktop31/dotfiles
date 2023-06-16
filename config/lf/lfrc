@@ -202,8 +202,8 @@ map git ${{clear; git status; echo "press ENTER"; read ENTER}}
 map gc cd ~/.config
 map gd cd ~/Downloads
 map gD cd ~/Documents
-map gp cd ~/Media/Pictures
-map gv cd ~/Media/Videos
+map gp cd ~/Pictures
+map gv cd ~/Videos
 map gf cd ~/Files
 map gV cd ~/Files/VUT/2-Semestr
 map gs cd ~/.local/src
