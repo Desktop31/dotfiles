@@ -1,0 +1,237 @@
+{
+    // change icon font size:							change here:   v           v
+    // sed -Ei "s/<span font='[0-9]*px' rise='\-?[0-9]*'>/<span font='25px' rise='-4000'>/m" ./modules
+
+    // Modules configuration
+    "wlr/workspaces": 
+    {
+        "all-outputs"   : false,
+        "format"        : "{name}",
+        "on-click"      : "activate",
+        "on-scroll-up"  : "hyprctl dispatch workspace m-1",
+        "on-scroll-down": "hyprctl dispatch workspace m+1"
+    },
+
+    "cpu": 
+    {
+        "interval"  : 10,
+        "format"    : "{usage}% <span font='25px' rise='-4000'></span>",
+        "max-length": 10
+    },
+
+    "network": 
+    {
+        "interface"                  : "wlp0s20f3",
+        "format"                     : "{ifname}",
+        "format-wifi"                : "{essid} <span font='25px' rise='-4000'></span>",
+        "format-ethernet"            : "<span font='25px' rise='-4000'></span>",
+        "format-disconnected"        : "", //An empty format will hide the module.
+        "tooltip-format"             : "{ifname} via {gwaddr} 󰊗",
+        "tooltip-format-wifi"        : "{ipaddr} ({signalStrength}%)",
+        "tooltip-format-ethernet"    : "{ifname} {ipaddr} ",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length"                 : 30
+    },
+
+    "battery": 
+    {
+    	"bat"     : "BAT0",
+    	"adapter" : "ADP0",
+    	"interval": 60,
+
+    	"states"  : 
+        {
+    		"warning" : 30,
+    		"critical": 10,
+    	},
+
+    	"format"      : "{capacity}% {icon}",
+    	"format-icons": 
+        {
+    		"charging": ["󰂄"],
+    		"default" : ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    		"critical": ["󰂃"],
+    	},
+
+        "on-click-middle": "exec ~/Scripts/togglePowersave.sh",
+    	"max-length"     : 25,
+    },
+
+    "battery#power": 
+    {
+    	"bat"            : "BAT0",
+    	"interval"       : 10,
+    	"format-charging": "+{power}W ",
+    	"format"         : "-{power}W ",
+        "on-click-middle": "exec ~/Scripts/togglePowersave",
+    	"max-length"     : 25,
+    },
+
+    "tray": 
+    {
+        "icon-size": 18,
+        "spacing"  : 10
+    },
+
+    "clock": 
+    {
+        "timezone"      : "Europe/Prague",
+        "interval"      : 1,
+        "format"        : "{:%H:%M}",
+        "tooltip-format": "<big><b>{:%d-%m-%Y}</b></big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt"    : "{:%H:%M:%S}",
+        "calendar"      : 
+        {
+            "format": 
+            {
+                "months"  : "",
+                "weekdays": "<span weight='bold'>{}</span>",
+                "days"    : "<span weight='normal'>{}</span>",
+                "today"   : "<span background='#9E891B' color='#2c2c2c'><b>{}</b></span>",
+            }
+        },
+
+        "on-click-right": "pkill gnome-calendar || gnome-calendar"
+    },
+
+    "pulseaudio": 
+    {
+        "format"                : "{icon} {volume}% {desc}",
+        "format-bluetooth"      : "{icon} <span font='25px' rise='-4000'></span> {volume}% {desc}",
+        "format-bluetooth-muted": "<span font='30px' rise='-6000'></span> <span font='25px' rise='-4000'></span> {volume}% {desc}",
+        "format-muted"          : "<span font='25px' rise='-4000'></span> {volume}% {desc}",
+        "format-icons"          : 
+        {
+            "headphone" : "<span font='25px' rise='-4000'>󰋋</span>",
+            "hands-free": "<span font='25px' rise='-4000'>󰋋</span>",
+            "headset"   : "<span font='25px' rise='-4000'>󰋎</span>",
+            "phone"     : "<span font='25px' rise='-4000'></span>",
+            "portable"  : "<span font='25px' rise='-4000'></span>",
+            "car"       : "<span font='25px' rise='-4000'></span>",
+            "default"   : 
+                [
+                    "<span font='25px' rise='-4000'></span>", 
+                    "<span font='25px' rise='-4000'></span>", 
+                    "<span font='25px' rise='-4000'></span>"
+                ]
+        },
+
+        "on-click"          : "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        // "on-click-right" : "pkill pavucontrol || pavucontrol",
+        "on-click-right"    : "bluetoothctl connect 80:C3:BA:1F:B0:4A",
+        "on-click-middle"   : "pulseaudio-control --node-blacklist  'VirtualMic','VoiceChat_IN','Output_IN','control.endpoint.multimedia','control.endpoint.communication' next-node",
+        "on-scroll-up"      : "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%-",
+        "on-scroll-down"    : "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%+",
+        "tooltip"           : false,
+    },
+
+    "pulseaudio#mic": 
+    {
+        "format"              : "{format_source}",
+        "format-source"       : "<span font='25px' rise='-4000'></span>",
+        "format-source-muted" : "<span font='25px' rise='-4000'></span>",
+        "on-click"            : "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+        "on-click-right"      : "/bin/sh -c ~/Scripts/connectDenoisedFilter.sh",
+        "on-scroll-up"        : "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 1%-",
+        "on-scroll-down"      : "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 1%+",
+        "tooltip"             : false
+    },
+
+    "custom/media": 
+    {
+        "format"          : "{}",
+        "interval"        : 1,
+        "exec"            : "python ~/.config/waybar/scripts/spotify_status.py",
+        "on-click"        : "playerctl play-pause -p spotify",
+        "on-click-right"  : "playerctl next -p spotify",
+        "on-click-middle" : "playerctl previous -p spotify",
+        "on-scroll-up"    : "playerctl volume 0.1- -p spotify",
+        "on-scroll-down"  : "playerctl volume 0.1+ -p spotify",
+        "return-type"     : "json",
+        "escape"          : true,
+        "tooltip"         : false
+    },
+
+    "custom/sysmenu": {
+        "format"   : "󰤆",
+        "on-click" : "~/.config/waybar/scripts/sysmenu.sh &",
+        "tooltip"  : false
+    },
+
+    "hyprland/window": 
+    {
+        "format"           : "{}",
+        "separate-outputs" : true
+    },
+
+    "custom/language": 
+    {
+    	"format"   : "{}",
+        "interval" : "once",
+        "exec-on-event" : true,
+        "exec"     : "sleep 0.1; hyprctl devices | awk '/main: yes/ {print a}{a=$3}' | tail -n 1",
+        "on-click" : "killall wvkbd-mobintl || wvkbd-mobintl -L 350 --landscape-layers landscape,special"
+    },
+
+    "memory": 
+    {
+        "interval" : 30,
+        "format"   : "{used:0.1f}G/{total:0.1f}G <span font='25px' rise='-4000'></span>",
+        "on-click" : "killall gnome-system-monitor || gnome-system-monitor -r"
+    },
+    
+    "custom/notifications": 
+    {
+        "restart-interval": 1,
+        "format"          : "<span font='25px' rise='-4000'>{}</span>",
+        "exec"            : "~/.config/waybar/scripts/notifications.sh",
+        "on-click"        : "dunstctl history-pop",
+        "on-click-right"  : "dunstctl close",
+        "on-click-middle" : "dunstctl set-paused toggle",
+        "tooltip"         : false,
+    },
+
+    "custom/audio_idle_inhibitor": 
+    {
+        "format"      : "{icon}",
+        "exec"        : "sway-audio-idle-inhibit --dry-print-both-waybar",
+        "exec-if"     : "which sway-audio-idle-inhibit",
+        "return-type" : "json",
+        "format-icons": 
+        {
+            "output"       : "",
+            "input"        : "",
+            "output-input" : "  ",
+            "none"         : ""
+        }
+    },
+
+    "custom/sepRight": 
+    {
+    	"format" : "",
+    	"tooltip": false
+    },
+
+    "custom/sepRight-alt": 
+    {
+    	"format" : "",
+    	"tooltip": false
+    },
+
+    "custom/sepLeft": 
+    {
+    	"format" : "",
+    	"tooltip": false
+    },
+
+    "custom/sepLeft-alt": 
+    {
+    	"format" : "",
+    	"tooltip": false
+    }
+
+    //  󰋋 󰋎 󰋐      󰌌                       
+    //             󰇖  󰇥   
+	//                  
+	// 󰁹 󰂂 󰂁 󰂀 󰁿 󰁾 󰁽 󰁼 󰁻 󰁺 󰂎 󰂄 󰂃  󰂆 󰂇 󰂈 󰂉 󰂊 󰂋 󰂅
+}

@@ -9,5 +9,6 @@
 ###############################
 !scripts/**
 !themes/**
-!config
+!config.template
+!modules
 !style.css
