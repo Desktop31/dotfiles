@@ -7,5 +7,4 @@
 # 1. !folder-name/    <-- includes the directory and top level files
 # 2. !folder-name/**  <-- includes the directory and sub level files recursively, except for the "Ignore some other system generated files" rules below
 ###############################
-!xfconf/xfce-perchannel-xml/thunar.xml.template
-!helpers.rc
+!thunar.xml.template
