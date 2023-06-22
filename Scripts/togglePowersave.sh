@@ -20,17 +20,17 @@ wbRefresh() {
 
 wbmOff() {
 	# comment line with media module
-	sed -Ei "s/^\s*\"modules\-left\"\: \[\"custom\/media\"\,\s\"hyprland\/window\"\,\s\"custom\/sepRight\"\].*/\/\/ &/" "/home/desktop31/.config/waybar/config"
+	sed -Ei "s/^\s*\"modules\-left\"\: \[\"custom\/media\"\,\s\"hyprland\/window\"\,\s\"custom\/sepRight\"\].*/\/\/ &/" "$HOME/.config/waybar/config"
 	# uncomment line without media module
-	sed -Ei "/^\s*\/\/\s*\"modules\-left\"\: \[\"hyprland\/window\"\,\s\"custom\/sepRight\"\].*/"'s/\/\/\s//' "/home/desktop31/.config/waybar/config"
+	sed -Ei "/^\s*\/\/\s*\"modules\-left\"\: \[\"hyprland\/window\"\,\s\"custom\/sepRight\"\].*/"'s/\/\/\s//' "$HOME/.config/waybar/config"
 	wbRefresh
 }
 
 wbmOn() {
 	# comment line without media module
-	sed -Ei "s/^\s*\"modules\-left\"\: \[\"hyprland\/window\"\,\s\"custom\/sepRight\"\].*/\/\/ &/" "/home/desktop31/.config/waybar/config"
+	sed -Ei "s/^\s*\"modules\-left\"\: \[\"hyprland\/window\"\,\s\"custom\/sepRight\"\].*/\/\/ &/" "$HOME/.config/waybar/config"
 	# uncomment line with media module 
-	sed -Ei "/^\s*\/\/\s*\"modules\-left\"\: \[\"custom\/media\"\,\s\"hyprland\/window\"\,\s\"custom\/sepRight\"\].*/"'s/\/\/\s//' "/home/desktop31/.config/waybar/config"
+	sed -Ei "/^\s*\/\/\s*\"modules\-left\"\: \[\"custom\/media\"\,\s\"hyprland\/window\"\,\s\"custom\/sepRight\"\].*/"'s/\/\/\s//' "$HOME/.config/waybar/config"
 
 	wbRefresh
 }
@@ -58,11 +58,11 @@ blurOn() {
 
 # Turn transparency on/off
 transOff() {
-	sed -Ei "s/^windowrule\s*=\s*opacity.*/# &/g" "/home/desktop31/.config/hypr/hyprland.conf"
+	sed -Ei "s/^windowrule\s*=\s*opacity.*/# &/g" "$HOME/.config/hypr/hyprland.conf"
 }
 
 transOn() {
-	sed -Ei "/^# windowrule\s*=\s*opacity.*/"'s/^#\s?//' "/home/desktop31/.config/hypr/hyprland.conf"
+	sed -Ei "/^# windowrule\s*=\s*opacity.*/"'s/^#\s?//' "$HOME/.config/hypr/hyprland.conf"
 }
 
 
