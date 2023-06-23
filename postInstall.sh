@@ -12,8 +12,8 @@ configFromTemplates() {
     cp "$DOTSDIR/config/waybar/config.template" "$DOTSDIR/config/waybar/config"
 
     # xfce thunar layout
-    cp "$DOTSDIR/config/xfconf/xfce-perchannel-xml/thunar.xml.template" "$DOTSDIR/config/xfconf/xfce-perchannel-xml/thunar.xml"
-    sed -Ei "s/username/$USERNAME/" "$DOTSDIR/config/xfconf/xfce-perchannel-xml/thunar.xml"
+    cp "$DOTSDIR/config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml.template" "$DOTSDIR/config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml"
+    sed -Ei "s/username/$USERNAME/" "$DOTSDIR/config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml"
 }
 
 
