@@ -65,12 +65,24 @@ case $chosen in
         fi
         ;;
     $lock)
-		if [[ -f /usr/bin/lightdm ]]; then
-			dm-tool lock
-		elif [[ -f /usr/bin/betterlockscreen ]]; then
-			betterlockscreen -l
-		elif [[ -f /usr/bin/i3lock ]]; then
-			i3lock
+        if systemctl status lightdm.service; then
+            dm-tool lock
+		elif [[ -f /usr/bin/swaylock ]]; then
+			swaylock \
+				--screenshots \
+				--clock \
+				--indicator \
+				--indicator-radius 100 \
+				--indicator-thickness 7 \
+				--effect-blur 10x9 \
+				--effect-vignette 0.5:0.5 \
+				--ring-color 9e891b \
+				--key-hl-color C0431C \
+				--line-color 00000000 \
+				--inside-color 2C2C2C \
+				--separator-color 00000000 \
+				--grace 2 \
+				--fade-in 0.2
 		fi
         ;;
     $suspend)
