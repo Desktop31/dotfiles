@@ -1,0 +1,26 @@
+#!/bin/sh
+
+if systemctl status lightdm.service 2>&1 1>/dev/null; then
+    swayidle -w \
+        before-sleep \
+        'dm-tool lock'
+elif [[ -f /usr/bin/swaylock ]]; then
+    swayidle -w \
+        before-sleep \
+        'swaylock \
+        -f \
+        --screenshots \
+        --clock \
+        --indicator \
+        --indicator-radius 100 \
+        --indicator-thickness 7 \
+        --effect-blur 10x9 \
+        --effect-vignette 0.5:0.5 \
+        --ring-color 9e891b \
+        --key-hl-color C0431C \
+        --line-color 00000000 \
+        --inside-color 2C2C2C \
+        --separator-color 00000000'
+fi
+
+
