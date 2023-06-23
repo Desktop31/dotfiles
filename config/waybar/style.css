@@ -64,14 +64,16 @@ window#waybar > box {
   color: @subtext;
   margin-left: 1px; 
   margin-right: 1px; 
+  border: 2px solid rgba(0,0,0,0);
   border-radius: 0px;
   transition-duration: 0.2s;
 }
 
 #workspaces button:hover {
-  background-color: @yellow;
+  background-color: rgba(31, 31, 31, 0.5);
   color: @gold;
   border: 2px solid @gold;
+  border-radius: 2px;
   transition-duration: 0.2s;
 }
 
