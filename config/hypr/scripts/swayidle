@@ -2,10 +2,12 @@
 
 if systemctl status lightdm.service 2>&1 1>/dev/null; then
     swayidle -w \
+        timeout 300 'systemctl suspend' \
         before-sleep \
         'dm-tool lock'
 elif [[ -f /usr/bin/swaylock ]]; then
     swayidle -w \
+        timeout 300 'systemctl suspend' \
         before-sleep \
         'swaylock \
         -f \
