@@ -14,6 +14,9 @@ exec-once = ~/Scripts/denoisedWrapper.sh
 # exec-once = ~/Scripts/connectRpiTunnel.sh
 # exec-once = ~/Scripts/connectDenoisedFilter.sh
 
+# uncomment this and disable dmlock.service to use
+# swaylock instead of lightdm (should for for both anyway)
+# exec-once = ~/.config/hypr/scripts/swayidle
 
 # ======================
 # ===    General     ===
