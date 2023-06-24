@@ -58,8 +58,8 @@ vim.keymap.set("n", "<C-S-Tab>", "<cmd>bprev<CR>")
 vim.keymap.set("n", "<leader>q", "<cmd>bd<CR>")
 
 -- Subway Surfers
-vim.keymap.set("n", "<leader>ss", "<Cmd>:TermExec cmd='mpv --vo=tct ~/Media/Funny/SubSurf.webm' size=60 dir=./ direction=vertical<CR>")
--- vim.keymap.set("n", "<leader>ss", "<Cmd>:TermExec cmd='mpv --start=01:35 --ytdl-format=242 --ytdl https://youtu.be/nNGQ7kMhGuQ --vo=tct' size=60 dir=./ direction=vertical<CR>")
+-- vim.keymap.set("n", "<leader>ss", "<Cmd>:TermExec cmd='mpv --vo=tct ~/Media/Funny/SubSurf.webm' size=60 dir=./ direction=vertical<CR>")
+vim.keymap.set("n", "<leader>ss", "<Cmd>:TermExec cmd='mpv --start=01:35 --ytdl-format=242 --ytdl https://youtu.be/nNGQ7kMhGuQ --vo=tct' size=60 dir=./ direction=vertical<CR>")
 
 -- Minecraft Parkour
 vim.keymap.set("n", "<leader>mp", "<Cmd>:TermExec cmd='mpv --ytdl-format=242 --ytdl https://youtu.be/2VpG0WS4uCo --vo=tct' size=60 dir=./ direction=vertical<CR>")
