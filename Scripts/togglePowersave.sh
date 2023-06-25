@@ -20,17 +20,17 @@ wbRefresh() {
 
 wbmOff() {
 	# comment line with media module
-	sed -Ei "s/^\s*\"modules\-left\"\: \[\"custom\/media\"\,\s\"hyprland\/window\"\,\s\"custom\/sepRight\"\].*/\/\/ &/" "$HOME/.config/waybar/config"
+	sed -Ei "s/^\s*.*\/\/REGULAR/\/\/ &/" "$HOME/.config/waybar/config"
 	# uncomment line without media module
-	sed -Ei "/^\s*\/\/\s*\"modules\-left\"\: \[\"hyprland\/window\"\,\s\"custom\/sepRight\"\].*/"'s/\/\/\s//' "$HOME/.config/waybar/config"
+	sed -Ei "/^\s*\/\/\s*.*\/\/POWERSAVE/"'s/\/\/\s//' "$HOME/.config/waybar/config"
 	wbRefresh
 }
 
 wbmOn() {
 	# comment line without media module
-	sed -Ei "s/^\s*\"modules\-left\"\: \[\"hyprland\/window\"\,\s\"custom\/sepRight\"\].*/\/\/ &/" "$HOME/.config/waybar/config"
+	sed -Ei "s/^\s*.*\/\/POWERSAVE/\/\/ &/" "$HOME/.config/waybar/config"
 	# uncomment line with media module 
-	sed -Ei "/^\s*\/\/\s*\"modules\-left\"\: \[\"custom\/media\"\,\s\"hyprland\/window\"\,\s\"custom\/sepRight\"\].*/"'s/\/\/\s//' "$HOME/.config/waybar/config"
+	sed -Ei "/^\s*\/\/\s*.*\/\/REGULAR/"'s/\/\/\s//' "$HOME/.config/waybar/config"
 
 	wbRefresh
 }
