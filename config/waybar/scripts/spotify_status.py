@@ -49,11 +49,36 @@ def fix_string(string):
     else:
         return string.encode('utf-8')
 
+
 def escape(string):
     string = string.replace("&", "&amp;")
     string = string.replace("\"", '\\"')
     string = string.replace("\'", "\\'")
     return string
+
+
+def secToMinSecStr(seconds):
+    secs  = int(seconds % 60)
+    mins  = int((seconds / 60) % 60)
+    hours = int(seconds / 3600)
+    
+    if hours == 0:
+        hourStr = f''
+    else:
+        hourStr = f'{hours}:'
+
+    if mins < 10:
+        minStr = f'0{mins}:'
+    else:
+        minStr = f'{mins}:'
+
+    if secs < 10:
+        secStr = f'0{secs}'
+    else:
+        secStr = f'{secs}'
+
+    return hourStr + minStr + secStr
+
 
 # Default parameters
 output = fix_string(u'{play_pause} {artist} - {song}')
@@ -87,6 +112,7 @@ try:
 
     metadata = spotify_properties.Get('org.mpris.MediaPlayer2.Player', 'Metadata')
     status = spotify_properties.Get('org.mpris.MediaPlayer2.Player', 'PlaybackStatus')
+    position = spotify_properties.Get('org.mpris.MediaPlayer2.Player', 'Position')
 
     # Handle play/pause label
 
@@ -106,6 +132,9 @@ try:
 
     artist = fix_string(metadata['xesam:artist'][0]) if metadata['xesam:artist'] else ''
     song = fix_string(metadata['xesam:title']) if metadata['xesam:title'] else ''
+    length = fix_string(metadata['mpris:length']) if metadata['mpris:length'] else ''
+
+    remaining = "[-" + secToMinSecStr((length / 1000000) - (position / 1000000)) + "]"
 
     if not artist and not song:
         print('')
@@ -121,7 +150,7 @@ try:
             song = label_with_font.format(font=font, label=song)
 
         # print(output.format(artist=artist, song=song, play_pause=play_pause))
-        text = play_pause + " " + artist + " - " + song
+        text = play_pause + remaining + " " + artist + " - " + song
         if len(text) > trunclen:
             text = text[0:trunclen] + "..."
 
