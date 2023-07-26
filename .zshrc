@@ -35,14 +35,17 @@ alias conf-autostart='ed $HOME/.config/hypr/autostart.conf'
 alias lg='lazygit'
 alias ls='ls -1 --color=auto'
 
+# fixthis (rn prints stuff in homedir)
+# alias ishere="for dir in $(ls -1 $PWD) ; cat $dir/*.txt | grep $1"
+
 # -- LF config - last dir --
 source "${XDG_CONFIG_HOME:-$HOME/.config}/lf/lf-shellcd/lf-shellcd"
 
 
 # -- PulseAudio Tunnel Connection --
-alias rpicon="~/Scripts/connectRpiTunnel.sh";
+alias goocon="~/Scripts/connectRpiTunnel.sh";
 
-rpidis() {
+goodis() {
     MODULE=$(cat ~/.logs/tunnel-logs.txt | grep "Tunnel successfully loaded as module" | cut -f 7 -d " " | tail -n 1)
     pactl unload-module $MODULE
 }

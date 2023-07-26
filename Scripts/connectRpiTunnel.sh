@@ -8,7 +8,7 @@ LOG_FOLDER="$HOME/.logs"
 LOG_DEST="$LOG_FOLDER/tunnel-logs.txt"
 DFORMAT="+[%d.%m.%Y|%H:%M:%S]"
 
-HOST="192.168.51.10"
+HOST="10.0.0.70"
 TIMEOUT=10
 ATTEMPTS=10
 
@@ -51,7 +51,6 @@ done
 
 echo "$(date $DFORMAT) Host $HOST found, loading module" >>$LOG_DEST
 
-# TODO: figure out why 2 channels dont work
-MODULE=$(pactl load-module module-tunnel-sink server=tcp:$HOST rate=44100 channels=1 sink_name=RPiTunnel sink_properties=device.description=RPiTunnel)
+MODULE=$(pactl load-module module-tunnel-sink server=tcp:$HOST rate=48000 channels=2 sink_name=GooberTunnel sink_properties=device.description=GooberTunnel)
 
 echo "$(date $DFORMAT) Tunnel successfully loaded as module $MODULE" >>$LOG_DEST
