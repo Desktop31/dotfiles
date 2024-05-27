@@ -16,4 +16,5 @@
 ###############################
 !connectDenoisedFilter.sh
 !connectRpiTunnel.sh
+!connectPulseTunnel.sh
 !togglePowersave.sh

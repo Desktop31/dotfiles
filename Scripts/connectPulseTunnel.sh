@@ -4,14 +4,22 @@
 # 
 # TODO: currently does not check if the tunnel actually exists on the device
 
-LOG_FOLDER="$HOME/.logs"
-LOG_DEST="$LOG_FOLDER/tunnel-logs.txt"
-DFORMAT="+[%d.%m.%Y|%H:%M:%S]"
-
-HOST="10.0.0.70"
+HOST="192.168.51.70"
+TunnelName="GooberTunnel"
 TIMEOUT=10
 ATTEMPTS=10
 
+if [ -n "$1" ]; then
+    HOST=$1
+fi
+
+if [ -n "$2" ]; then
+    TunnelName=$2
+fi
+
+LOG_FOLDER="$HOME/.logs"
+LOG_DEST="$LOG_FOLDER/tunnel-$TunnelName.log"
+DFORMAT="+[%d.%m.%Y|%H:%M:%S]"
 
 if [ ! -e LOG_FOLDER ]
 then
@@ -51,6 +59,6 @@ done
 
 echo "$(date $DFORMAT) Host $HOST found, loading module" >>$LOG_DEST
 
-MODULE=$(pactl load-module module-tunnel-sink server=tcp:$HOST rate=48000 channels=2 sink_name=GooberTunnel sink_properties=device.description=GooberTunnel)
+MODULE=$(pactl load-module module-tunnel-sink server=tcp:"$HOST" rate=44100 channels=1 sink_name="$TunnelName" sink_properties=device.description="$TunnelName")
 
 echo "$(date $DFORMAT) Tunnel successfully loaded as module $MODULE" >>$LOG_DEST
